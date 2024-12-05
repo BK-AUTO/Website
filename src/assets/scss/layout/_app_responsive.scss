@@ -1,0 +1,17 @@
+@media (max-width: $md) {
+  .page-header,
+  .page-content,
+  .page-footer {
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+
+  .page-header {
+    .header-content {
+      width: 90%;
+      top: 80%;
+      -ms-transform: translateY(-80%);
+      transform: translateY(-80%);
+    }
+  }
+}

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration monitorInterval="15">
+
+  <Properties>
+    <Property name="LOG_DIR">./logs</Property>
+    <Property name="LOG_FILE">logs</Property>
+    <Property name="LOG_PATTERN">
+      %d [%thread] [%level] %C{1.} - %msg%n
+    </Property>
+  </Properties>
+
+  <Appenders>
+    <Console name="consoleLog" target="SYSTEM_OUT">
+      <PatternLayout pattern="${LOG_PATTERN}"/>
+    </Console>
+
+    <RollingFile name="fileLog" fileName="${LOG_DIR}/${LOG_FILE}.log"
+      filePattern="${LOG_DIR}/${LOG_FILE}_%d{dd-MM-yyyy}-(%i).log">
+      <Policies>
+        <SizeBasedTriggeringPolicy size="100MB"/>
+      </Policies>
+      <PatternLayout pattern="${LOG_PATTERN}"/>
+    </RollingFile>
+  </Appenders>
+
+  <SpringProfile name="dev">
+    <Loggers>
+      <Root level="info">
+        <AppenderRef ref="consoleLog"/>
+      </Root>
+      <Logger name="com.optimizely.challenge" level="debug" additivity="false">
+        <AppenderRef ref="consoleLog"/>
+      </Logger>
+    </Loggers>
+  </SpringProfile>
+  <SpringProfile name="prod">
+    <Loggers>
+      <Root level="info">
+        <AppenderRef ref="fileLog"/>
+      </Root>
+    </Loggers>
+  </SpringProfile>
+
+</Configuration>

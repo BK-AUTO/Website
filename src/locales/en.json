@@ -1,0 +1,139 @@
+{
+  "menu": {
+    "management": "Management",
+    "dashboard": "Dashboard",
+    "about": "About Us",
+
+    "project-create": "Create project",
+    "project-manage": "Manage projects",
+    "project-manage-details": "Project details",
+    "project-details": "Project details",
+    "project": "Projects",
+
+    "research-create": "Create research",
+    "research-manage": "Manage research",
+    "research-manage-details": "Research details",
+    "research-details": "Research details",
+    "research": "Research",
+
+    "course-create": "Create course",
+    "course-manage": "Manage courses",
+    "course-manage-details": "Course details",
+    "course-details": "Course details",
+    "course": "Courses",
+
+    "news-create": "Create news",
+    "news-manage": "Manage news",
+    "news-manage-details": "News details",
+    "news-details": "News details",
+    "news": "News",
+
+    "contact-manage": "Manage contact",
+    "contact": "Contact"
+  },
+  "common": {
+    "login": "Login",
+    "logout": "Log out",
+    "username": "Username",
+    "password": "Password",
+    "intro": "Introduction",
+    "accessNow": "Find out now",
+    "registerNow": "Register now",
+    "viewAll": "View all",
+    "collapse": "Collapse"
+  },
+  "prompt": {
+    "sessionExpired": "Session Expired",
+    "restartLogin": "Login will start from beginning",
+    "error": "An error happened"
+  },
+  "error": {
+    "password": "Password must be at least 8 characters long, 1 uppercase letter and 1 special character",
+    "loginUnsuccessful": "The ID or password is incorrect.",
+    "required": "Please input {0}",
+    "required2": "This field is required"
+  },
+
+  "dashboard": {
+    "hust": "Hanoi University of Science and Technology",
+    "welcome": "Welcome to the BK Auto Club",
+    "description": "BK-AUTO Club was established in 2010 with the purpose of creating a scientific research playground for students of Hanoi University of Science and Technology in general and students of the Automotive and Specialized Vehicle Department of the Faculty of Mechanical Engineering in particular..."
+  },
+
+  "intro": {
+    "subtitle": "INTRODUCTION",
+    "title": "BK Auto Club",
+    "description1": "BK-AUTO Club was established in 2010 with the purpose of creating a scientific research playground for students of Hanoi University of Science and Technology in general and students of the Automotive and Specialized Vehicle Department of the Faculty of Mechanical Engineering in particular.",
+    "description2": "Formerly known as the Eco-Car Club - fuel economy with the tradition of participating in Honda's Eco-Driving competition, by 2021, BK-AUTO has expanded its scope of research, learning, and development to many different areas such as: electric vehicle simulation, electronic system design on cars, IT applications in cars... to participate in student scientific research competitions inside and outside the school such as: Polytechnic Youth Creativity, Student Scientific Research Month, EMC Honda, ...",
+    "description2-short": "Formerly known as the Eco-Car Club - fuel economy with a tradition of participating in Honda's Eco-Driving competition,..."
+  },
+
+  "manager": {
+    "subtitle": "Management Board",
+    "subtitle2": "Advisory Board",
+    "title": "OUR CLUB"
+  },
+
+  "milestones": {
+    "subtitle": "MILESTONES",
+    "title": "Awards Won"
+  },
+
+  "project": {
+    "subtitle": "EXPLORE",
+    "title": "Our projects"
+  },
+
+  "research": {
+    "subtitle": "DISCOVER",
+    "title": "Publications"
+  },
+
+  "event": {
+    "title": "New events"
+  },
+
+  "stats": {
+    "partners": "Partners",
+    "prizes": "Prizes",
+    "members": "Members",
+    "courses": "Courses"
+  },
+
+  "course": {
+    "subtitle": "DISCOVER",
+    "title": "Learning courses"
+  },
+
+  "news": {
+    "subtitle": "UPDATE",
+    "title": "Latest news"
+  },
+
+  "contact": {
+    "subtitle": "We are ready to help you answer any questions!",
+    "title": "Enter contact information",
+    "name": "Full name",
+    "enterName": "Enter full name",
+    "email": "Email",
+    "enterEmail": "Enter email",
+    "phone": "Phone number",
+    "enterPhone": "Enter phone number",
+    "address": "Address",
+    "enterAddress": "Enter address",
+    "message": "Message",
+    "enterMessage": "Describe more clearly the issue you are interested in",
+    "send": "Send information",
+    "contactSaved": "Contact information has been saved"
+  },
+
+  "link": {
+    "address": "Address",
+    "link": "link",
+    "about": "About Us",
+    "contact": "Contact",
+    "intro": "Introduction",
+    "prize": "Awards",
+    "research": "Featured Articles"
+  }
+}

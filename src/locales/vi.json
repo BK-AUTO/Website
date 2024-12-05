@@ -1,0 +1,139 @@
+{
+  "menu": {
+    "management": "Quản lý",
+    "dashboard": "Trang chủ",
+    "about": "Về chúng tôi",
+
+    "project-create": "Tạo dự án",
+    "project-manage": "Quản lý dự án",
+    "project-manage-details": "Chi tiết dự án",
+    "project-details": "Chi tiết dự án",
+    "project": "Dự án",
+
+    "research-create": "Tạo nghiên cứu",
+    "research-manage": "Quản lý nghiên cứu",
+    "research-manage-details": "Chi tiết nghiên cứu",
+    "research-details": "Chi tiết nghiên cứu",
+    "research": "Nghiên cứu",
+
+    "course-create": "Tạo khóa học",
+    "course-manage": "Quản lý khóa học",
+    "course-manage-details": "Chi tiết khóa học",
+    "course-details": "Chi tiết khóa học",
+    "course": "Khóa học",
+
+    "news-create": "Tạo tin tức",
+    "news-manage": "Quản lý tin tức",
+    "news-manage-details": "Chi tiết tin tức",
+    "news-details": "Chi tiết tin tức",
+    "news": "Tin tức",
+
+    "contact-manage": "Quản lý liên hệ",
+    "contact": "Liên hệ"
+  },
+  "common": {
+    "login": "Đăng nhập",
+    "logout": "Đăng xuất",
+    "username": "Tên",
+    "password": "Mật khẩu",
+    "intro": "Giới thiệu",
+    "accessNow": "Tìm hiểu ngay",
+    "registerNow": "Đăng ký ngay",
+    "viewAll": "Xem tất cả",
+    "collapse": "Thu gọn"
+  },
+  "prompt": {
+    "sessionExpired": "Phiên hết hạn",
+    "restartLogin": "Vui lòng đăng nhập lại",
+    "error": "Có lỗi xảy ra"
+  },
+  "error": {
+    "password": "Mật khẩu cần có ít nhất 8 ký tự, bao gồm 1 ký tự viết hoa và 1 ký tự đặc biệt.",
+    "loginUnsuccessful": "Thông tin đăng nhập không đúng.",
+    "required": "Trường {0} là bắt buộc",
+    "required2": "Trường này không được bỏ trống"
+  },
+
+  "dashboard": {
+    "hust": "Đại học Bách Khoa Hà Nội",
+    "welcome": "Chào mừng bạn đến với câu lạc bộ BK Auto",
+    "description": "Câu lạc bộ BK- AUTO được thành lập vào năm 2010 với mục đích tạo sân chơi nghiên cứu khoa học cho sinh viên Đại học Bách Khoa Hà Nội nói chung và sinh viên bộ môn Ô tô và Xe chuyên dụng khoa Cơ Khí Động lực nói riêng..."
+  },
+
+  "intro": {
+    "subtitle": "GIỚI THIỆU",
+    "title": "Câu lạc bộ BK Auto",
+    "description1": "Câu lạc bộ BK - AUTO được thành lập vào năm 2010 với mục đích tạo sân chơi nghiên cứu khoa học cho sinh viên Đại học Bách Khoa Hà Nội nói chung và sinh viên bộ môn Ô tô và Xe chuyên dụng khoa Cơ Khí Động lực nói riêng.",
+    "description2": "Tiền thân là CLB Xe sinh thái - tiết kiệm nhiên liệu với truyền thống tham gia cuộc thi Lái xe sinh thái của Honda, tới năm 2021, BK-AUTO đã mở rộng phạm vi nghiên cứu, học hỏi, phát triển lên nhiều mảng khác nhau như: mô phỏng xe điện, thiết kế hệ thống điện tử trên ô tô, ứng dụng CNTT trong ô tô...để tham gia các cuộc thi sinh viên nghiên cứu khoa học trong và ngoài nhà trường như: Sáng tạo trẻ Bách khoa, Tháng Sinh viên Nghiên cứu Khoa học, EMC Honda, ...",
+    "description2-short": "Tiền thân là CLB Xe sinh thái - tiết kiệm nhiên liệu với truyền thống tham gia cuộc thi Lái xe sinh thái của Honda,..."
+  },
+
+  "manager": {
+    "subtitle": "Ban quản lý",
+    "subtitle2": "Ban cố vấn",
+    "title": "CÂU LẠC BỘ CỦA CHÚNG TÔI"
+  },
+
+  "milestones": {
+    "subtitle": "CỘT MỐC",
+    "title": "Các giải thưởng đã đạt được"
+  },
+
+  "project": {
+    "subtitle": "TÌM HIỂU",
+    "title": "Các dự án của chúng tôi"
+  },
+
+  "research": {
+    "subtitle": "KHÁM PHÁ",
+    "title": "Các công bố khoa học"
+  },
+
+  "event": {
+    "title": "Sự kiện mới"
+  },
+
+  "stats": {
+    "partners": "Đối tác",
+    "prizes": "Giải thưởng",
+    "members": "Thành viên",
+    "courses": "Khóa học"
+  },
+
+  "course": {
+    "subtitle": "KHÁM PHÁ",
+    "title": "Các khóa học đang triển khai"
+  },
+
+  "news": {
+    "subtitle": "CẬP NHẬT",
+    "title": "Những tin tức mới nhất"
+  },
+
+  "contact": {
+    "subtitle": "Chúng tôi sẵn sàng giúp bạn giải đáp mọi thắc mắc!",
+    "title": "Đăng ký thông tin liên hệ",
+    "name": "Họ và tên",
+    "enterName": "Nhập họ và tên",
+    "email": "Email",
+    "enterEmail": "Nhập email",
+    "phone": "Số điện thoại",
+    "enterPhone": "Nhập số điện thoại",
+    "address": "Địa chỉ",
+    "enterAddress": "Nhập địa chỉ",
+    "message": "Lời nhắn",
+    "enterMessage": "Mô tả rõ hơn vấn đề bạn đang quan tâm",
+    "send": "Gửi thông tin",
+    "contactSaved": "Thông tin liên hệ đã được ghi nhận"
+  },
+
+  "link": {
+    "address": "Địa chỉ",
+    "link": "link",	
+    "about": "Về chúng tôi",
+    "contact": "Liên hệ",
+    "intro": "Giới thiệu",
+    "prize": "Giải thưởng",
+    "research": "Các bài viết nổi bật"
+  }
+}

@@ -1,0 +1,15 @@
+// app.scss
+//
+// Template's man stylesheet.
+//
+
+// Bootstrap
+@import 'bootstrap/dist/css/bootstrap.min.css';
+
+// Base
+@import './base/_override';
+@import './base/_variables';
+
+// Layouts
+@import './layout/_app.scss';
+@import './layout/app_responsive';

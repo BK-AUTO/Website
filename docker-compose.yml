@@ -1,0 +1,43 @@
+version: '3.0'
+
+services:
+  db:
+    image: postgres:12
+    container_name: bkauto-db
+    restart: always
+    ports:
+      - "5433:5432"
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: PlLcIne8Syc9e28KSioAeA/Vzz8=
+  backend:
+    container_name: bkauto-be
+    build:
+      context: ./bkauto-be/Demo
+      dockerfile: Dockerfile.be
+    restart: always
+    ports:
+      - "6066:6066"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    volumes:
+      - ./application.deploy.yml:/backend/src/main/resources/application.yml
+    depends_on:
+      - db
+  frontend:
+    container_name: bkauto-fe
+    build:
+      context: .
+      dockerfile: Dockerfile.fe
+    restart: always
+    volumes:
+      - ./constants.js:/frontend/src/composables/constants.js
+    ports:
+      - "5173:5173"
+    depends_on:
+      - backend
+
+volumes:  
+  bkauto:
+  

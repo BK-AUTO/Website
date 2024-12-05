@@ -1,0 +1,19 @@
+databaseChangeLog:
+  - changeSet:
+      id: 2
+      author: tien.nguyen
+      changes:
+        - loadData:
+            file: db/changelog/data/authors.csv
+            separator: ";"
+            tableName: author
+            columns:
+              - column:
+                  name: email
+                  type: STRING
+              - column:
+                  name: firstname
+                  type: STRING
+              - column:
+                  name: lastname
+                  type: STRING

@@ -1,0 +1,75 @@
+.page-header,
+.page-content,
+.page-footer {
+  padding-left: 18%;
+  padding-right: 18%;
+}
+
+.page-header {
+  width: 100%;
+  padding-top: 24px;
+  position: relative;
+
+  * {
+    color: #fff;
+  }
+
+  .header-content {
+    width: 64%;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+
+    .breadcrumb-container {
+      display: flex;
+      justify-content: center;
+      span {
+        font-size: 15px;
+        font-family: $vietnam-font-2;
+      }
+
+      .breadcrumb-separator {
+        margin: 0 8px;
+      }
+      .sub-link {
+        color: #fff;
+      }
+      .main-link {
+        span {
+          color: $color-primary;
+        }
+      }
+    }
+    .page-title {
+      text-align: center;
+      margin-top: 6px;
+      span {
+        font-family: $vietnam-font-2;
+        font-size: 50px;
+        font-weight: 600;
+      }
+    }
+  }
+}
+
+.page-content {
+  padding-top: 80px;
+  padding-bottom: 80px;
+  .uploading-image {
+    height: 220px;
+  }
+}
+
+ul {
+  padding-left: 0;
+  list-style: none;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 20px;
+}

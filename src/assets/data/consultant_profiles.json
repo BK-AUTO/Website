@@ -1,0 +1,38 @@
+[
+  {
+    "name": "PGS. TS Đàm Hoàng Phúc",
+    "title": "Giám đốc chương trình đào tạo ngành Kỹ thuật ô tô, trường Cơ khí, Đại học Bách khoa Hà Nội",
+    "email": "phuc.damhoang@hust.edu.vn",
+    "thumbnail": "/src/assets/img/member/1.png"
+  },
+  {
+    "name": "TS. Lê Văn Nghĩa",
+    "title": "Giảng viên thuộc bộ môn Ô tô và xe chuyên dụng, trường Cơ khí, Đại học Bách khoa Hà Nội",
+    "email": "nghia.levan@hust.edu.vn",
+    "thumbnail": "/src/assets/img/member/2.png"
+  },
+  {
+    "name": "Chủ nhiệm: Nguyễn Đức Quang",
+    "title": "Giảng viên K65 CTTT kỹ thuật ô tô, trường Cơ khí, Đại học Bách khoa Hà Nội",
+    "email": "Quang.ND207171@sis.hust.edu.vn",
+    "thumbnail": "/src/assets/img/member/3.png"
+  },
+  {
+    "name": "Phó chủ nhiệm: Trần Anh Tuấn",
+    "title": "K65 Kỹ thuật ô tô",
+    "email": "Tuan.TA200564@sis.hust.edu.vn",
+    "thumbnail": "/src/assets/img/member/4.jpeg"
+  },
+  {
+    "name": "Phó chủ nhiệm: Ngô Mạnh Công",
+    "title": "K65 Kỹ thuật ô tô",
+    "email": "Cong.NM200071@sis.hust.edu.vn",
+    "thumbnail": "/src/assets/img/member/5.jpeg"
+  },
+  {
+    "name": "Phó chủ nhiệm: Nguyễn Văn Hiếu",
+    "title": "K66 CTTT kỹ thuật ô tô",
+    "email": "Hieu.NV210353@sis.hust.edu.vn",
+    "thumbnail": "/src/assets/img/member/6.jpeg"
+  }
+]
