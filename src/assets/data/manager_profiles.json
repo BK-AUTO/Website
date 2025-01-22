@@ -1,38 +1,65 @@
 [
   {
-    "name": "PGS. TS Đàm Hoàng Phúc",
-    "title": "Giám đốc chương trình đào tạo ngành Kỹ thuật ô tô, trường Cơ khí, Đại học Bách khoa Hà Nội",
-    "email": "phuc.damhoang@hust.edu.vn",
-    "thumbnail": "/src/assets/img/member/1.png"
+    "name": "Nguyễn Văn Hiếu",
+    "role1": "Chủ nhiệm",
+    "role2": "Trưởng mảng Mô Phỏng",
+    "MSSV": "20210353",
+    "title": "K66 CTTT kỹ thuật ô tô ĐH Bách Khoa Hà Nội",
+    "email": "hieu.nv210353@sis.hust.edu.vn",
+    "thumbnail": "https://as1.ftcdn.net/v2/jpg/05/16/27/58/1000_F_516275801_f3Fsp17x6HQK0xQgDQEELoTuERO4SsWV.jpg"
   },
   {
-    "name": "TS. Lê Văn Nghĩa",
-    "title": "Giảng viên thuộc bộ môn Ô tô và xe chuyên dụng, trường Cơ khí, Đại học Bách khoa Hà Nội",
-    "email": "nghia.levan@hust.edu.vn",
-    "thumbnail": "/src/assets/img/member/2.png"
+    "name": "Trương Hoàng Long",
+    "role1": "Phó Chủ nhiệm",
+    "role2": "Trưởng mảng Điện - Điện tử",
+    "MSSV": "20210551",
+    "title": "K66 CTTT Kỹ thuật ô tô ĐH Bách Khoa Hà Nội",
+    "email": "long.th210551@sis.hust.edu.vn",
+    "thumbnail": "https://as1.ftcdn.net/v2/jpg/05/16/27/58/1000_F_516275801_f3Fsp17x6HQK0xQgDQEELoTuERO4SsWV.jpg"
   },
   {
-    "name": "Chủ nhiệm: Nguyễn Đức Quang",
-    "title": "Giảng viên K65 CTTT kỹ thuật ô tô, trường Cơ khí, Đại học Bách khoa Hà Nội",
-    "email": "Quang.ND207171@sis.hust.edu.vn",
-    "thumbnail": "/src/assets/img/member/3.png"
+    "name": "Hà Minh Hoàng",
+    "role1": "Phó Chủ nhiệm",
+    "role2": "Trưởng mảng Gia công",
+    "MSSV": "20210366",
+    "title": "K66 CTTT Kỹ thuật ô tô ĐH Bách Khoa Hà Nội",
+    "email": "hoang.hm210366@sis.hust.edu.vn",
+    "thumbnail": "https://as1.ftcdn.net/v2/jpg/05/16/27/58/1000_F_516275801_f3Fsp17x6HQK0xQgDQEELoTuERO4SsWV.jpg"
   },
   {
-    "name": "Phó chủ nhiệm: Trần Anh Tuấn",
-    "title": "K65 Kỹ thuật ô tô",
-    "email": "Tuan.TA200564@sis.hust.edu.vn",
-    "thumbnail": "/src/assets/img/member/4.jpeg"
+    "name": "Cao Văn Tú",
+    "role1": "Phó chủ nhiệm",
+    "role2": "Trưởng mảng Truyền thông",
+    "MSSV": "20207178",
+    "title": "K65 Kỹ thuật ô tô ĐH Bách Khoa Hà Nội",
+    "email": "tu.cv207178@sis.hust.edu.vn",
+    "thumbnail": "https://as1.ftcdn.net/v2/jpg/05/16/27/58/1000_F_516275801_f3Fsp17x6HQK0xQgDQEELoTuERO4SsWV.jpg"
   },
   {
-    "name": "Phó chủ nhiệm: Ngô Mạnh Công",
-    "title": "K65 Kỹ thuật ô tô",
-    "email": "Cong.NM200071@sis.hust.edu.vn",
-    "thumbnail": "/src/assets/img/member/5.jpeg"
+    "name": "Phạm Việt Anh",
+    "role1": "Ủy viên BQL",
+    "role2": "Trưởng mảng AI for Automobile",
+    "MSSV": "20238743",
+    "title": "K68 CTTT Kỹ thuật ô tô ĐH Bách Khoa Hà Nội",
+    "email": "anh.pv238743@gmail.com",
+    "thumbnail": "https://as1.ftcdn.net/v2/jpg/05/16/27/58/1000_F_516275801_f3Fsp17x6HQK0xQgDQEELoTuERO4SsWV.jpg"
   },
   {
-    "name": "Phó chủ nhiệm: Nguyễn Văn Hiếu",
-    "title": "K66 CTTT kỹ thuật ô tô",
-    "email": "Hieu.NV210353@sis.hust.edu.vn",
-    "thumbnail": "/src/assets/img/member/6.jpeg"
+    "name": "Phạm Quốc Anh",
+    "role1": "Ủy viên BQL",
+    "role2": "Trưởng mảng Thí nghiệm",
+    "MSSV": "20210081",
+    "title": "K66 Kỹ thuật ô tô ĐH Bách Khoa Hà Nội",
+    "email": "anh.pq210081@sis.hust.edu.vn",
+    "thumbnail": "https://as1.ftcdn.net/v2/jpg/05/16/27/58/1000_F_516275801_f3Fsp17x6HQK0xQgDQEELoTuERO4SsWV.jpg"
+  },
+  {
+    "name": "Chu Tiến Đạt",
+    "role1": "Ủy viên BQL",
+    "role2": "Trưởng mảng Tiếng Anh",
+    "MSSV": "20227827",
+    "title": "K67 CTTT Kỹ thuật ô tô ĐH Bách Khoa Hà Nội",
+    "email": "dat.ct227827@sis.hust.edu.vn",
+    "thumbnail": "https://as1.ftcdn.net/v2/jpg/05/16/27/58/1000_F_516275801_f3Fsp17x6HQK0xQgDQEELoTuERO4SsWV.jpg"
   }
 ]
