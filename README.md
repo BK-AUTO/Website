@@ -83,6 +83,7 @@ Output thông thường sẽ có đường dẫn đến 2 file:
 Bước 4: Sửa config bkauto.vn ở bước 2 với certificate mới - CHÚ Ý SỬA THAM SỐ ssl_certificate & ssl_certificate_key khớp với đường dẫn được tạo ra ở bước 3
 
 ```
+
 upstream frontend {
     server 127.0.0.1:5173;
 }
@@ -181,3 +182,10 @@ server {
 }
 
 ```
+
+Một số lệnh khác:
+sudo docker restart ---
+sudo docker logs ---
+sudo docker compose up -d --build
+sudo docker ps
+sudo docker compose down 
