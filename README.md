@@ -13,6 +13,7 @@ Bước 3: Restart backend service (trong trường hợp lỗi)
 `docker restart bkauto-be`
 
 Các service sẽ có các port tương ứng:
+
 - Backend: 6066
 - Frontend: 5173
 - Postgres DB: 5433
@@ -27,6 +28,7 @@ https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-
 Bước 2: Setup host cho BKAuto - Bước này giả định các config về tên miền và DNS đã phù hợp (domain bkauto.vn trỏ vào đúng IP server đang host)
 
 - Tạo file bkauto.vn.conf ở đường dẫn /etc/nginx/conf, content như sau:
+
 ```
 upstream frontend {
     server 127.0.0.1:5173;
@@ -63,18 +65,20 @@ sudo nginx -s reload
 ```
 
 Bước 3: Tạo certificate cho domain bkauto.vn bằng certbot
+
 ```
 sudo certbot --nginx -d bkauto.vn
 ```
+
 Output thông thường sẽ có đường dẫn đến 2 file:
 
 - Congratulations! Your certificate and chain have been saved at:
-  
-   /etc/letsencrypt/live/bkauto.vn/fullchain.pem
-  
-   Your key file has been saved at:
-  
-   /etc/letsencrypt/live/bkauto.vn/privkey.pem
+
+  /etc/letsencrypt/live/bkauto.vn/fullchain.pem
+
+  Your key file has been saved at:
+
+  /etc/letsencrypt/live/bkauto.vn/privkey.pem
 
 Bước 4: Sửa config bkauto.vn ở bước 2 với certificate mới - CHÚ Ý SỬA THAM SỐ ssl_certificate & ssl_certificate_key khớp với đường dẫn được tạo ra ở bước 3
 
@@ -88,6 +92,11 @@ upstream backend {
 }
 
 server {
+    if ($host = bkauto.vn) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+
     listen 80;
 
     server_name bkauto.vn;
@@ -104,6 +113,8 @@ server {
         proxy_set_header        X-Forwarded-Proto $scheme;
         return 301 https://bkauto.vn$request_uri;
     }
+
+
 }
 
 server {
@@ -113,12 +124,11 @@ server {
     index index.html index.htm index.nginx-debian.html;
 
     add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
-    
+  
     access_log /logs/bkauto-access-logs.log;
     error_log /logs/bkauto-error-logs.log;
-
-    ssl_certificate /etc/nginx/ssl/live/bkauto.vn/fullchain.pem;
-    ssl_certificate_key /etc/nginx/ssl/live/bkauto.vn/privkey.pem;
+    ssl_certificate /etc/letsencrypt/live/bkauto.vn/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/bkauto.vn/privkey.pem; # managed by Certbot
 
     ssl_session_timeout 5m;
     ssl_protocols TLSv1 TLSv1.1 TLSv1.2 TLSv1.3;
@@ -144,7 +154,7 @@ server {
         proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
         proxy_set_header        X-Forwarded-Proto $scheme;
         proxy_redirect http:// https://;
-        proxy_pass              http://backend;
+        proxy_pass              http://backend/;
         # Required for new HTTP-based CLI
         proxy_http_version 1.1;
         proxy_request_buffering off;
@@ -167,8 +177,7 @@ server {
     location /.well-known/acme-challenge/ {
         root /var/www/certbot;
     }
+
 }
 
-
 ```
-  
