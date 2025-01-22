@@ -5,7 +5,6 @@
       <svg width="100" height="2" viewBox="0 0 60 2">
         <rect y="0.5" width="70" height="1" fill="#888a95" fill-opacity="0.8" />
       </svg>
-      {{ t('manager.title') }}
       <svg width="100" height="2" viewBox="0 0 60 2">
         <rect y="0.5" width="70" height="1" fill="#888a95" fill-opacity="0.8" />
       </svg>
@@ -20,12 +19,14 @@
         :email="profile.email"
         :name="profile.name"
         :title="profile.title"
+        :specialist="profile.specialist"
       />
     </div>
   </div>
 </template>
+
 <script setup>
-import Profile from '@/components/Profile.vue';
+import Profile from '@/components/ConsultProfile.vue';
 import { useI18n } from 'vue-i18n';
 import profile_data from '/src/assets/data/consultant_profiles.json';
 
@@ -33,9 +34,15 @@ const { t } = useI18n();
 defineProps({
   title: String,
 });
-
 </script>
+
 <style lang="scss" scoped>
+.page-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
 .profiles-title {
   text-align: center;
   font-family: $vietnam-font-2;
@@ -43,12 +50,18 @@ defineProps({
   color: #181c32;
   margin-bottom: 10px;
 }
+
 .profiles-subtitle {
   color: $color-gray-7;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 12px;
+  margin-bottom: 20px;
+}
+
+.profile {
+  min-width: 300px;
   margin-bottom: 20px;
 }
 </style>
