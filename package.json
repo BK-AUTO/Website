@@ -25,6 +25,7 @@
     "bootstrap": "5.1.3",
     "cron-expression-validator": "^1.0.20",
     "dayjs": "^1.11.10",
+    "fe": "file:",
     "moment": "^2.30.1",
     "pinia": "^2.1.7",
     "pinia-plugin-persistedstate": "^3.2.1",
