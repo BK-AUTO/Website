@@ -3,11 +3,11 @@ FROM node:20-alpine AS build
 
 WORKDIR /build
 
-# Copy only package files first to leverage caching
-COPY package.json package-lock.json* ./
+# Copy package files with explicit paths
+COPY package.json package-lock.json ./
 
-# Install dependencies with optimized flags
-RUN npm ci --only=production
+# Install all dependencies (including dev dependencies needed for build)
+RUN npm ci
 
 # Copy source files
 COPY . .
@@ -15,13 +15,13 @@ COPY . .
 # Build the application
 RUN npm run build
 
-# Production stage
+# Production stage - lighter image
 FROM node:20-alpine AS production
 
 WORKDIR /frontend
 
-# Install a lightweight server
-RUN npm install -g serve
+# Install serve for lightweight serving
+RUN npm install -g serve@latest
 
 # Copy built assets from build stage
 COPY --from=build /build/dist ./dist
@@ -29,5 +29,5 @@ COPY --from=build /build/dist ./dist
 # Expose port
 EXPOSE 5173
 
-# Run with a lightweight server
+# Run with serve
 CMD ["serve", "-s", "dist", "-l", "5173"]
