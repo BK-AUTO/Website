@@ -4,7 +4,6 @@ import router from './router';
 import { sessionInterceptor } from './composables/interceptor';
 import i18n from '@/i18n.js';
 import { createHead } from '@unhead/vue';
-import antdv from 'ant-design-vue';
 import '@/assets/scss/app.scss';
 import { createPinia } from 'pinia';
 import piniaPluginPersistedstate from 'pinia-plugin-persistedstate';
@@ -30,7 +29,6 @@ app
   .use(i18n)
   .use(router)
   .use(head)
-  .use(antdv)
   .use(pinia)
   .component('font-awesome-icon', FontAwesomeIcon)
   .component('QuillEditor', QuillEditor);
