@@ -62,5 +62,5 @@ export const formatDateString = (isoDateString) => {
 const createDefaultFile = async() => {
   const response = await fetch(this.defaultImagePath);
   const blob = await response.blob();
-  return new File([blob], '@/assets/img/background/bg-default.png', { type: blob.type });
+  return new File([blob], '@/assets/img/background/bg-default.webp', { type: blob.type });
 };

@@ -95,7 +95,7 @@ const newsColumns = [
 <style lang="scss" scoped>
 .page-header {
   background: linear-gradient(0deg, rgba(0, 0, 0, 0.64), rgba(0, 0, 0, 0.64)),
-    url('@/assets/img/background/bg-news.jpg');
+    url('@/assets/img/background/bg-news.webp');
   background-size: cover;
 }
 </style>

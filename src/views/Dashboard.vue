@@ -70,7 +70,7 @@ const redirectToAboutPage = () => {
   height: 720px;
   background: #000000a3;
   background: linear-gradient(0deg, rgba(0, 0, 0, 0.64), rgba(0, 0, 0, 0.64)),
-    url('@/assets/img/background/bg-default.png');
+    url('@/assets/img/background/bg-default.webp');
   background-size: cover;
 
   .subtitle1 {

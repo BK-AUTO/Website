@@ -12,7 +12,7 @@
           <div class="row">
             <div class="col-6 col-md-4">
               <img v-if="previewImage" :src="previewImage" class="uploading-image" />
-              <img v-else src="@/assets/img/background/bg-bkauto.png" class="uploading-image" />
+              <img v-else src="@/assets/img/background/bg-bkauto.webp" class="uploading-image" />
             </div>
             <div class="col-6 col-md-8">
               <div class="title">{{ formState.title }}</div>
@@ -110,7 +110,7 @@ const getCourse = async () => {
 <style lang="scss" scoped>
 .page-header {
   background: linear-gradient(0deg, rgba(0, 0, 0, 0.64), rgba(0, 0, 0, 0.64)),
-    url('@/assets/img/background/bg-course.jpg');
+    url('@/assets/img/background/bg-course.webp');
   background-size: cover;
 }
 

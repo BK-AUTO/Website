@@ -8,9 +8,10 @@ import '@/assets/scss/app.scss';
 import { createPinia } from 'pinia';
 import piniaPluginPersistedstate from 'pinia-plugin-persistedstate';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { fab } from '@fortawesome/free-brands-svg-icons';
-import { far } from '@fortawesome/free-regular-svg-icons';
-import { fas } from '@fortawesome/free-solid-svg-icons';
+// Import only the specific icons used
+import { faPhone, faEnvelope, faArrowRight, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import { faFacebook } from '@fortawesome/free-brands-svg-icons';
+// No regular icons were found, so 'far' import is removed.
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { QuillEditor } from '@vueup/vue-quill'
 import '@vueup/vue-quill/dist/vue-quill.snow.css';
@@ -23,7 +24,8 @@ const app = createApp(App);
 const pinia = createPinia();
 pinia.use(piniaPluginPersistedstate);
 
-library.add(far, fab, fas);
+// Add only the specific icons to the library
+library.add(faPhone, faEnvelope, faArrowRight, faArrowLeft, faFacebook);
 
 app
   .use(i18n)

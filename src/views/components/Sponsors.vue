@@ -19,7 +19,7 @@
 <style lang="scss" scoped>
 .highlight-stats {
   background: linear-gradient(0deg, rgba(0, 0, 0, 0.64), rgba(0, 0, 0, 0.64)),
-    url('@/assets/img/background/bg2.jpeg');
+    url('@/assets/img/background/bg2.webp');
   background-position: center;
   background-size: cover;
   .stat {

@@ -12,7 +12,7 @@
 <style lang="scss" scoped>
 .page-content {
   background: linear-gradient(0deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
-    url('@/assets/img/background/bg3.jpeg');
+    url('@/assets/img/background/bg3.webp');
   background-position: center;
   background-size: cover;
   .event-title {

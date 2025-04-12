@@ -143,7 +143,7 @@ const handleDelete = async () => {
 <style lang="scss" scoped>
 .page-header {
   background: linear-gradient(0deg, rgba(0, 0, 0, 0.64), rgba(0, 0, 0, 0.64)),
-    url('@/assets/img/background/bg-research.jpg');
+    url('@/assets/img/background/bg-research.webp');
   background-size: cover;
 }
 

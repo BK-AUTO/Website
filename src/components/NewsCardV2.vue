@@ -2,7 +2,7 @@
   <div :class="newsClass" @click="redirectToDetailPage">
     <div class="course-image">
       <img v-if="thumbnail" :src="`data:image/jpeg;base64,${thumbnail}`" />
-      <img v-else src="@/assets/img/background/bg-bkauto.png" />
+      <img v-else src="@/assets/img/background/bg-bkauto.webp" />
     </div>
 
     <div class="description">
