@@ -25,6 +25,7 @@
         height="300px"
         src="https://www.youtube.com/embed/lR8vXIP2e9I"
         title="[BK-AUTO] Nhiệt huyết và đam mê"
+        loading="lazy"
         frameborder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         referrerpolicy="strict-origin-when-cross-origin"

@@ -6,4 +6,4 @@ COPY . .
 
 RUN mvn clean && mvn package -DskipTests
 
-CMD ["mvn", "spring-boot:run", "-Dspring.config.location=/backend/src/main/resources/application.yml"]
+CMD ["mvn", "spring-boot:run", "-Dspring.config.location=/config/application.yml"]

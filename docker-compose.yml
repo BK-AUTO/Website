@@ -22,7 +22,7 @@ services:
     extra_hosts:
       - "host.docker.internal:host-gateway"
     volumes:
-      - ./application.deploy.yml:/backend/src/main/resources/application.yml
+      - ./application.deploy.yml:/config/application.yml
     depends_on:
       - db
   frontend:
