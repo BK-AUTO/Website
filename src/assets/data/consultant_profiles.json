@@ -4,27 +4,27 @@
     "title": "Giám đốc chương trình đào tạo ngành Kỹ thuật Ô tô",
     "specialist": "NCM Ô tô và Xe chuyên dụng, trường Cơ khí, Đại học Bách khoa Hà Nội",
     "email": "phuc.damhoang@hust.edu.vn",
-    "thumbnail": "/assets/img/member/ThayPhuc.webp"
+    "thumbnail": "src/assets/img/member/ThayPhuc.webp"
    },
   {
     "name": "TS. Lê Văn Nghĩa",
     "title": "Giảng viên",
     "specialist": "NCM Ô tô và Xe chuyên dụng, trường Cơ khí, Đại học Bách khoa Hà Nội",
     "email": "nghia.levan@hust.edu.vn",
-    "thumbnail": "/assets/img/member/ThayNghia.webp"
+    "thumbnail": "src/assets/img/member/ThayNghia.webp"
   },
   {
     "name": "TS. Trần Trọng Đạt",
     "title": "Giảng viên",
     "specialist": "NCM Ô tô và Xe chuyên dụng, trường Cơ khí, Đại học Bách khoa Hà Nội",
     "email": "dat.trantrong@hust.edu.vn",
-    "thumbnail": "/assets/img/member/ThayDat.webp"
+    "thumbnail": "src/assets/img/member/ThayDat.webp"
   },
   {
     "name": "ThS. Nguyễn Quốc Triệu",
     "title": "Giảng viên",
     "specialist": "NCM Ô tô và Xe chuyên dụng, trường Cơ khí, Đại học Bách khoa Hà Nội",
     "email": "trieu.nguyenquoc@hust.edu.vn",
-    "thumbnail": "/assets/img/member/ThayTrieu.webp"
+    "thumbnail": "src/assets/img/member/ThayTrieu.webp"
   }
 ]

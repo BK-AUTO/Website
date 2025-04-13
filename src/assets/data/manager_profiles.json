@@ -6,7 +6,7 @@
     "MSSV": "20210353",
     "title": "K66 CTTT kỹ thuật ô tô ĐH Bách Khoa Hà Nội",
     "email": "hieu.nv210353@sis.hust.edu.vn",
-    "thumbnail": "/assets/img/member/NguyenVanHieu.webp"
+    "thumbnail": "src/assets/img/member/NguyenVanHieu.webp"
   },
   {
     "name": "Trương Hoàng Long",
@@ -15,7 +15,7 @@
     "MSSV": "20210551",
     "title": "K66 CTTT Kỹ thuật ô tô ĐH Bách Khoa Hà Nội",
     "email": "long.th210551@sis.hust.edu.vn",
-    "thumbnail": "/assets/img/member/TruongHoangLong.webp"
+    "thumbnail": "src/assets/img/member/TruongHoangLong.webp"
   },
   {
     "name": "Hà Minh Hoàng",
@@ -24,7 +24,7 @@
     "MSSV": "20210366",
     "title": "K66 CTTT Kỹ thuật ô tô ĐH Bách Khoa Hà Nội",
     "email": "hoang.hm210366@sis.hust.edu.vn",
-    "thumbnail": "/assets/img/member/HaMinhHoang.webp"
+    "thumbnail": "src/assets/img/member/HaMinhHoang.webp"
   },
   {
     "name": "Cao Văn Tú",
@@ -33,7 +33,7 @@
     "MSSV": "20207178",
     "title": "K65 CTTT Kỹ thuật ô tô ĐH Bách Khoa Hà Nội",
     "email": "tu.cv207178@sis.hust.edu.vn",
-    "thumbnail": "/assets/img/member/CaoVanTu.webp"
+    "thumbnail": "src/assets/img/member/CaoVanTu.webp"
   },
   {
     "name": "Phạm Việt Anh",
@@ -42,7 +42,7 @@
     "MSSV": "20238743",
     "title": "K68 CTTT Kỹ thuật ô tô ĐH Bách Khoa Hà Nội",
     "email": "anh.pv238743@gmail.com",
-    "thumbnail": "/assets/img/member/PhamVietAnh.webp"
+    "thumbnail": "src/assets/img/member/PhamVietAnh.webp"
   },
   {
     "name": "Phạm Quốc Anh",
@@ -60,6 +60,6 @@
     "MSSV": "20227827",
     "title": "K67 CTTT Kỹ thuật ô tô ĐH Bách Khoa Hà Nội",
     "email": "dat.ct227827@sis.hust.edu.vn",
-    "thumbnail": "/assets/img/member/ChuTienDat.webp"
+    "thumbnail": "src/assets/img/member/ChuTienDat.webp"
   }
 ]
