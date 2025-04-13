@@ -41,9 +41,13 @@ export const showNotificationError = (t, msgData) => {
 
 export const showNotification = (t, message, type = 'success') => {
   notification[type]({
-    message: t(`label.${type}`),
+    message: t(`prompt.${type === 'success' ? 'success' : 'error'}`),
     description: message,
   });
+};
+
+export const showNotificationSuccess = (t, message) => {
+  return showNotification(t, message, 'success');
 };
 
 export const showWarningModal = (t, content) => {
