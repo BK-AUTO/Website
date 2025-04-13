@@ -17,8 +17,9 @@
           <a-form-item name="username">
             <a-input
               v-model:value="formState.username"
-              autocomplete="off"
+              autocomplete="username"
               :placeholder="t('common.username')"
+              @paste.prevent
             >
               <template #addonBefore>
                 <UserOutlined style="color: rgba(0, 0, 0, 0.25)" />
@@ -29,14 +30,16 @@
             <a-input
               v-model:value="formState.password"
               type="password"
-              autocomplete="off"
+              autocomplete="current-password"
               :placeholder="t('common.password')"
+              @paste.prevent
             >
               <template #addonBefore>
                 <LockOutlined style="color: rgba(0, 0, 0, 0.25)" />
               </template>
             </a-input>
           </a-form-item>
+          <input type="hidden" :value="csrfToken" name="_csrf" />
           <div class="language-select">
             <LanguageSelect />
           </div>
@@ -69,22 +72,63 @@ const formRef = ref();
 const isShowModalConfirm = ref(false);
 const isLoading = ref(false);
 
+const csrfToken = ref('');
 const formState = reactive({
   username: '',
   password: '',
 });
+
+// Get CSRF token on component mount
+onMounted(async () => {
+  try {
+    const response = await fetch('/api/csrf-token', {
+      credentials: 'include'
+    });
+    const data = await response.json();
+    csrfToken.value = data.token;
+  } catch (error) {
+    console.error('Failed to fetch CSRF token:', error);
+  }
+});
 const submitLogin = async (value) => {
   try {
+    if (!csrfToken.value) {
+      showNotificationError(t, t('error.securityToken'));
+      return;
+    }
+
     isLoading.value = true;
     const payload = {
       username: value.username,
       password: value.password,
+      _csrf: csrfToken.value
     };
 
-    const responseData = await LoginService.login(payload);
+    // Add rate limiting check
+    const rateLimitKey = `login_attempts_${value.username}`;
+    const attempts = parseInt(localStorage.getItem(rateLimitKey) || '0');
+    
+    if (attempts >= 5) {
+      const lastAttempt = parseInt(localStorage.getItem(`${rateLimitKey}_time`) || '0');
+      const cooldownPeriod = 15 * 60 * 1000; // 15 minutes
+      
+      if (Date.now() - lastAttempt < cooldownPeriod) {
+        showNotificationError(t, t('error.tooManyAttempts'));
+        return;
+      } else {
+        localStorage.setItem(rateLimitKey, '0');
+      }
+    }
 
+    const responseData = await LoginService.login(payload);
+    localStorage.setItem(rateLimitKey, '0');
     navigateToManagement();
   } catch (error) {
+    const rateLimitKey = `login_attempts_${value.username}`;
+    const attempts = parseInt(localStorage.getItem(rateLimitKey) || '0');
+    localStorage.setItem(rateLimitKey, (attempts + 1).toString());
+    localStorage.setItem(`${rateLimitKey}_time`, Date.now().toString());
+
     if (error.response && error.response.status === 400) {
       showNotificationError(t, t('error.loginUnsuccessful'));
     } else {
