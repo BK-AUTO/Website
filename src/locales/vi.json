@@ -45,13 +45,22 @@
   "prompt": {
     "sessionExpired": "Phiên hết hạn",
     "restartLogin": "Vui lòng đăng nhập lại",
-    "error": "Có lỗi xảy ra"
+    "error": "Có lỗi xảy ra",
+    "success": "Thành công"
   },
   "error": {
     "password": "Mật khẩu cần có ít nhất 8 ký tự, bao gồm 1 ký tự viết hoa và 1 ký tự đặc biệt.",
     "loginUnsuccessful": "Thông tin đăng nhập không đúng.",
     "required": "Trường {0} là bắt buộc",
-    "required2": "Trường này không được bỏ trống"
+    "required2": "Trường này không được bỏ trống",
+    "invalidEmail": "Vui lòng nhập địa chỉ email hợp lệ",
+    "invalidPhone": "Vui lòng nhập số điện thoại hợp lệ (10-11 số)",
+    "maxLength": "Dữ liệu nhập vào vượt quá độ dài cho phép",
+    "securityToken": "Thiếu mã bảo mật. Vui lòng tải lại trang.",
+    "tooManySubmissions": "Quá nhiều yêu cầu. Vui lòng thử lại sau.",
+    "tooManyAttempts": "Quá nhiều lần thử. Vui lòng thử lại sau 15 phút.",
+    "pleaseCheckForm": "Vui lòng kiểm tra lại biểu mẫu",
+    "genericError": "Đã xảy ra lỗi. Vui lòng thử lại."
   },
 
   "dashboard": {
@@ -124,7 +133,8 @@
     "message": "Lời nhắn",
     "enterMessage": "Mô tả rõ hơn vấn đề bạn đang quan tâm",
     "send": "Gửi thông tin",
-    "contactSaved": "Thông tin liên hệ đã được ghi nhận"
+    "contactSaved": "Thông tin liên hệ đã được ghi nhận",
+    "privacyNotice": "Bằng cách gửi biểu mẫu này, bạn đồng ý với chính sách bảo mật của chúng tôi. Chúng tôi chỉ thu thập thông tin cá nhân của bạn để phản hồi yêu cầu và sẽ không chia sẻ với bên thứ ba. Dữ liệu của bạn được lưu trữ và xử lý an toàn theo luật bảo vệ dữ liệu hiện hành."
   },
 
   "link": {

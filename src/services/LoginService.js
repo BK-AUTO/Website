@@ -12,11 +12,16 @@ export default {
     return response.data;
   },
 
-  async logout() {
+  async logout(csrfToken) {
     const authenticationStore = useAuthenticationStore();
-    await axiosInstance.post('/authentication/logout');
-    await navigateToLogin();
-    authenticationStore.setUser(null);
+    try {
+      await axiosInstance.post('/authentication/logout', { _csrf: csrfToken });
+      authenticationStore.setUser(null);
+      await navigateToLogin();
+    } catch (error) {
+      console.error('Logout error:', error);
+      throw error;
+    }
   },
 
 };

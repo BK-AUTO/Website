@@ -12,33 +12,63 @@
       </div>
     </div>
     <div class="page-content">
-      <div class="manage-link"><a href="/news/manage">Quản lý Tin tức</a></div>
-      <div class="manage-link"><a href="/project/manage">Quản lý Dự án</a></div>
-      <div class="manage-link"><a href="/research/manage">Quản lý Nghiên cứu</a></div>
-      <div class="manage-link"><a href="/course/manage">Quản lý Khóa học</a></div>
-      <div class="manage-link"><a href="/contact/manage">Quản lý Liên hệ</a></div>
-      <div class="logout-btn" @click="submitLogout">Đăng xuất</div>
+      <div class="manage-link">
+        <router-link to="/news/manage">{{ t('menu.news-manage') }}</router-link>
+      </div>
+      <div class="manage-link">
+        <router-link to="/project/manage">{{ t('menu.project-manage') }}</router-link>
+      </div>
+      <div class="manage-link">
+        <router-link to="/research/manage">{{ t('menu.research-manage') }}</router-link>
+      </div>
+      <div class="manage-link">
+        <router-link to="/course/manage">{{ t('menu.course-manage') }}</router-link>
+      </div>
+      <div class="manage-link">
+        <router-link to="/contact/manage">{{ t('menu.contact-manage') }}</router-link>
+      </div>
+      <div class="logout-btn" @click="handleLogout">{{ t('common.logout') }}</div>
     </div>
   </div>
 </template>
 
 <script setup>
 import Loading from '@/components/Loading.vue';
-import { useTitle } from '@/composables/common.js';
+import { useTitle, showNotificationError } from '@/composables/common.js';
 import HeaderV2 from '@/layout/AppHeaderV2.vue';
 import LoginService from '@/services/LoginService';
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
 import { useI18n } from 'vue-i18n';
 
 useTitle('menu.dashboard');
 const { t } = useI18n();
 const isLoading = ref(false);
+const csrfToken = ref('');
 
-const submitLogout = async () => {
+onMounted(async () => {
   try {
-    await LoginService.logout();
+    const response = await fetch('/api/csrf-token', {
+      credentials: 'include'
+    });
+    const data = await response.json();
+    csrfToken.value = data.token;
   } catch (error) {
-    alert(error);
+    console.error('Failed to fetch CSRF token:', error);
+  }
+});
+
+const handleLogout = async () => {
+  try {
+    if (!csrfToken.value) {
+      showNotificationError(t, t('error.securityToken'));
+      return;
+    }
+    isLoading.value = true;
+    await LoginService.logout(csrfToken.value);
+  } catch (error) {
+    showNotificationError(t, t('error.genericError'));
+  } finally {
+    isLoading.value = false;
   }
 };
 </script>
