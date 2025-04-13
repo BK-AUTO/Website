@@ -34,7 +34,7 @@
 
 <script setup>
 import Loading from '@/components/Loading.vue';
-import { useTitle, showNotificationError } from '@/composables/common.js';
+import { useTitle } from '@/composables/common.js';
 import HeaderV2 from '@/layout/AppHeaderV2.vue';
 import LoginService from '@/services/LoginService';
 import { ref } from 'vue';
@@ -46,12 +46,9 @@ const isLoading = ref(false);
 
 const handleLogout = async () => {
   try {
-    isLoading.value = true;
     await LoginService.logout();
   } catch (error) {
-    showNotificationError(t, t('error.genericError'));
-  } finally {
-    isLoading.value = false;
+    alert(error);
   }
 };
 </script>

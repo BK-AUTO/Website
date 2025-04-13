@@ -5,23 +5,18 @@ import { useAuthenticationStore } from "@/stores/authentication.js";
 export default {
 
   async login(data) {
-    try {
-      const authenticationStore = useAuthenticationStore();
-      const response = await axiosInstance.post('/authentication/login', data);
-      const {userName} = response.data;
-      authenticationStore.setUser(userName);
-      return response.data;
-    } catch (error) {
-      console.error('Login error:', error);
-      throw error;
-    }
+    const authenticationStore = useAuthenticationStore();
+    const response = await axiosInstance.post('/authentication/login', data);
+    const {userName} = response.data;
+    authenticationStore.setUser(userName);
+    return response.data;
   },
 
   async logout() {
     const authenticationStore = useAuthenticationStore();
     await axiosInstance.post('/authentication/logout');
-    authenticationStore.setUser(null);
     await navigateToLogin();
+    authenticationStore.setUser(null);
   },
 
 };
