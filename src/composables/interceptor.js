@@ -1,24 +1,25 @@
 import { navigateToLogin } from "@/composables/navigation.js";
 import axiosInstance from './axios.js';
 import LoginService from "@/services/LoginService.js";
+import { showNotificationError } from "@/composables/common.js";
 
 export const sessionInterceptor = () => {
+  // Response interceptor
   axiosInstance.interceptors.response.use(
-      res => {
-        return res;
-      },
-      async err => {
-        const originalConfig = err.config;
-
-        if (originalConfig.url !== '/api/authentication/login' && err.response) {
-          if (err.response.status === 401) {
-            alert('Phiên làm việc hết hạn, vui lòng đăng nhập')
-            await navigateToLogin(); // Session expired
+    (response) => response,  // Return successful responses as-is
+    async (error) => {
+      if (error.response) {
+        // Handle 401 Unauthorized
+        if (error.response.status === 401) {
+          try {
             await LoginService.logout();
-            return;
+            await navigateToLogin();
+          } catch (logoutError) {
+            console.error('Logout error:', logoutError);
           }
         }
-        return Promise.reject(err);
-      },
+      }
+      return Promise.reject(error);
+    }
   );
-}
+};

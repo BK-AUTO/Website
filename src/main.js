@@ -27,19 +27,40 @@ pinia.use(piniaPluginPersistedstate);
 
 // Add only the specific icons to the library
 library.add(faPhone, faEnvelope, faArrowRight, faArrowLeft, faFacebook);
+// Initialize interceptors first
+sessionInterceptor();
 
-app
-  .use(i18n)
-  .use(router)
-  .use(head)
-  .use(pinia)
-  .component('font-awesome-icon', FontAwesomeIcon)
-  .component('QuillEditor', QuillEditor);
+// Initialize plugins and mount app
+const initApp = async () => {
+  try {
+    app
+      .use(i18n)
+      .use(router)
+      .use(head)
+      .use(pinia)
+      .component('font-awesome-icon', FontAwesomeIcon)
+      .component('QuillEditor', QuillEditor);
 
+    // Mount the app
+    app.mount('#app');
+  } catch (error) {
+    console.error('Failed to initialize app:', error);
+  }
+};
+
+// Start initialization
+initApp();
 sessionInterceptor();
 
 // Add router navigation guard to control loading state
 let initialRouteLoaded = false;
+router.beforeEach((to, from, next) => {
+  if (!initialRouteLoaded) {
+    isAppLoading.value = true;
+  }
+  next();
+});
+
 router.afterEach(() => {
   // Only set loading to false after the *initial* route is loaded
   if (!initialRouteLoaded) {
@@ -47,5 +68,3 @@ router.afterEach(() => {
     initialRouteLoaded = true;
   }
 });
-
-app.mount('#app');

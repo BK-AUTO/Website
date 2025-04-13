@@ -37,34 +37,17 @@ import Loading from '@/components/Loading.vue';
 import { useTitle, showNotificationError } from '@/composables/common.js';
 import HeaderV2 from '@/layout/AppHeaderV2.vue';
 import LoginService from '@/services/LoginService';
-import { ref, onMounted } from 'vue';
+import { ref } from 'vue';
 import { useI18n } from 'vue-i18n';
 
 useTitle('menu.dashboard');
 const { t } = useI18n();
 const isLoading = ref(false);
-const csrfToken = ref('');
-
-onMounted(async () => {
-  try {
-    const response = await fetch('/api/csrf-token', {
-      credentials: 'include'
-    });
-    const data = await response.json();
-    csrfToken.value = data.token;
-  } catch (error) {
-    console.error('Failed to fetch CSRF token:', error);
-  }
-});
 
 const handleLogout = async () => {
   try {
-    if (!csrfToken.value) {
-      showNotificationError(t, t('error.securityToken'));
-      return;
-    }
     isLoading.value = true;
-    await LoginService.logout(csrfToken.value);
+    await LoginService.logout();
   } catch (error) {
     showNotificationError(t, t('error.genericError'));
   } finally {
