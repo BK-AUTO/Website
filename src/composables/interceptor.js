@@ -4,21 +4,41 @@ import LoginService from "@/services/LoginService.js";
 
 export const sessionInterceptor = () => {
   axiosInstance.interceptors.response.use(
-      res => {
-        return res;
-      },
-      async err => {
-        const originalConfig = err.config;
+    async response => {
+      return response;
+    },
+    async error => {
+      const originalRequest = error.config;
 
-        if (originalConfig.url !== '/api/authentication/login' && err.response) {
-          if (err.response.status === 401) {
-            alert('Phiên làm việc hết hạn, vui lòng đăng nhập')
-            await navigateToLogin(); // Session expired
-            await LoginService.logout();
-            return;
-          }
+      // Handle 401 Unauthorized
+      if (error.response?.status === 401) {
+        await LoginService.logout();
+        await navigateToLogin();
+        return Promise.reject(error);
+      }
+
+      // Handle 403 Forbidden (CSRF token issue)
+      if (error.response?.status === 403 && !originalRequest._retry) {
+        originalRequest._retry = true;
+        try {
+          // Try to get a new CSRF token
+          const response = await fetch(`${axiosInstance.defaults.baseURL}/csrf-token`, {
+            credentials: 'include'
+          });
+          const { token } = await response.json();
+          
+          // Update the token in headers
+          originalRequest.headers['X-CSRF-TOKEN'] = token;
+          
+          // Retry the original request
+          return axiosInstance(originalRequest);
+        } catch (retryError) {
+          console.error('Failed to refresh CSRF token:', retryError);
+          return Promise.reject(retryError);
         }
-        return Promise.reject(err);
-      },
+      }
+
+      return Promise.reject(error);
+    }
   );
-}
+};
