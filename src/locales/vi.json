@@ -46,8 +46,7 @@
     "sessionExpired": "Phiên hết hạn",
     "restartLogin": "Vui lòng đăng nhập lại",
     "error": "Có lỗi xảy ra",
-    "success": "Thành công",
-    "tokenRefresh": "Đang làm mới mã bảo mật..."
+    "success": "Thành công"
   },
   "error": {
     "password": "Mật khẩu cần có ít nhất 8 ký tự, bao gồm 1 ký tự viết hoa và 1 ký tự đặc biệt.",
@@ -57,8 +56,7 @@
     "invalidEmail": "Vui lòng nhập địa chỉ email hợp lệ",
     "invalidPhone": "Vui lòng nhập số điện thoại hợp lệ (10-11 số)",
     "maxLength": "Dữ liệu nhập vào vượt quá độ dài cho phép",
-    "securityToken": "Thiếu mã bảo mật. Đang làm mới...",
-    "tokenRefreshFailed": "Không thể làm mới mã bảo mật. Vui lòng tải lại trang.",
+    "securityToken": "Thiếu mã bảo mật. Vui lòng tải lại trang.",
     "tooManySubmissions": "Quá nhiều yêu cầu. Vui lòng thử lại sau.",
     "tooManyAttempts": "Quá nhiều lần thử. Vui lòng thử lại sau 15 phút.",
     "pleaseCheckForm": "Vui lòng kiểm tra lại biểu mẫu",
@@ -67,13 +65,13 @@
 
   "dashboard": {
     "hust": "Đại học Bách Khoa Hà Nội",
-    "welcome": "Chào mừng bạn đến với câu lạc bộ BK-AUTO",
+    "welcome": "Chào mừng bạn đến với câu lạc bộ BK Auto",
     "description": "Câu lạc bộ BK- AUTO được thành lập vào năm 2010 với mục đích tạo sân chơi nghiên cứu khoa học cho sinh viên Đại học Bách Khoa Hà Nội nói chung và sinh viên bộ môn Ô tô và Xe chuyên dụng khoa Cơ Khí Động lực nói riêng..."
   },
 
   "intro": {
     "subtitle": "GIỚI THIỆU",
-    "title": "Câu lạc bộ BK-AUTO",
+    "title": "Câu lạc bộ BK Auto",
     "description1": "Câu lạc bộ BK - AUTO được thành lập vào năm 2010 với mục đích tạo sân chơi nghiên cứu khoa học cho sinh viên Đại học Bách Khoa Hà Nội nói chung và sinh viên bộ môn Ô tô và Xe chuyên dụng khoa Cơ Khí Động lực nói riêng.",
     "description2": "Tiền thân là CLB Xe sinh thái - tiết kiệm nhiên liệu với truyền thống tham gia cuộc thi Lái xe sinh thái của Honda, tới năm 2021, BK-AUTO đã mở rộng phạm vi nghiên cứu, học hỏi, phát triển lên nhiều mảng khác nhau như: mô phỏng xe điện, thiết kế hệ thống điện tử trên ô tô, ứng dụng CNTT trong ô tô...để tham gia các cuộc thi sinh viên nghiên cứu khoa học trong và ngoài nhà trường như: Sáng tạo trẻ Bách khoa, Tháng Sinh viên Nghiên cứu Khoa học, EMC Honda, ...",
     "description2-short": "Tiền thân là CLB Xe sinh thái - tiết kiệm nhiên liệu với truyền thống tham gia cuộc thi Lái xe sinh thái của Honda,..."

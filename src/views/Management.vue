@@ -34,7 +34,7 @@
 
 <script setup>
 import Loading from '@/components/Loading.vue';
-import { useTitle, showNotificationError } from '@/composables/common.js';
+import { useTitle } from '@/composables/common.js';
 import HeaderV2 from '@/layout/AppHeaderV2.vue';
 import LoginService from '@/services/LoginService';
 import { ref } from 'vue';
@@ -43,59 +43,12 @@ import { useI18n } from 'vue-i18n';
 useTitle('menu.dashboard');
 const { t } = useI18n();
 const isLoading = ref(false);
-const axiosInstance = (await import('@/composables/axios')).default;
-
-const refreshCsrfToken = async () => {
-  try {
-    const response = await fetch('/api/csrf-token', {
-      credentials: 'include'
-    });
-    const data = await response.json();
-    if (data.token) {
-      axiosInstance.defaults.headers.common['X-CSRF-TOKEN'] = data.token;
-      return true;
-    }
-    return false;
-  } catch (error) {
-    return false;
-  }
-};
-
-// Get initial CSRF token
-const fetchCsrfToken = async () => {
-  try {
-    const response = await fetch(`${import.meta.env.VITE_API_URL}/csrf-token`, {
-      credentials: 'include'
-    });
-    const data = await response.json();
-    return data.token;
-  } catch (error) {
-    console.error('Failed to fetch CSRF token:', error);
-    return null;
-  }
-};
 
 const handleLogout = async () => {
   try {
-    isLoading.value = true;
     await LoginService.logout();
   } catch (error) {
-    if (error.response?.status === 403) {
-      const refreshed = await refreshCsrfToken();
-      if (!refreshed) {
-        window.location.reload();
-        return;
-      }
-      try {
-        await LoginService.logout();
-      } catch (retryError) {
-        window.location.reload();
-      }
-    } else {
-      showNotificationError(t, t('error.genericError'));
-    }
-  } finally {
-    isLoading.value = false;
+    alert(error);
   }
 };
 </script>
