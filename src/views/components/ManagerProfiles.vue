@@ -30,39 +30,11 @@
 <script setup>
 import Profile from '@/components/ManaProfile.vue';
 import { useI18n } from 'vue-i18n';
-import { computed } from 'vue';
-import raw_profile_data from '/src/assets/data/manager_profiles.json';
+import profile_data from '/src/assets/data/manager_profiles.json';
 
-// Import all member images using glob
-const memberImages = import.meta.glob('../../assets/img/member/*.webp', { eager: true });
 const { t } = useI18n();
 defineProps({
   title: String,
-});
-
-// Process profile data to resolve thumbnail URLs
-const profile_data = computed(() => {
-  return raw_profile_data.map(profile => {
-    // Handle external URLs directly
-    if (profile.thumbnail.startsWith('http')) {
-      return profile;
-    }
-
-    // Extract filename from the JSON path
-    const filename = profile.thumbnail.split('/').pop();
-    // Construct the key for the glob import (relative path from this component)
-    const globKey = `../../assets/img/member/${filename}`;
-
-    if (memberImages[globKey]) {
-      // Get the processed URL from the imported module
-      const resolvedThumbnailUrl = memberImages[globKey].default;
-      return { ...profile, thumbnail: resolvedThumbnailUrl };
-    } else {
-      console.warn(`Image not found for profile ${profile.name}: ${profile.thumbnail}`);
-      // Optionally return a placeholder or the original path
-      return { ...profile, thumbnail: '' }; // Or return profile as is
-    }
-  });
 });
 </script>
 
