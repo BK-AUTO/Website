@@ -3,6 +3,7 @@ import App from './App.vue';
 import router from './router';
 import { sessionInterceptor } from './composables/interceptor';
 import i18n from '@/i18n.js';
+import { isAppLoading } from '@/composables/loadingState.js'; // Import shared state
 import { createHead } from '@unhead/vue';
 import '@/assets/scss/app.scss';
 import { createPinia } from 'pinia';
@@ -26,6 +27,7 @@ pinia.use(piniaPluginPersistedstate);
 
 // Add only the specific icons to the library
 library.add(faPhone, faEnvelope, faArrowRight, faArrowLeft, faFacebook);
+
 app
   .use(i18n)
   .use(router)
@@ -35,5 +37,15 @@ app
   .component('QuillEditor', QuillEditor);
 
 sessionInterceptor();
+
+// Add router navigation guard to control loading state
+let initialRouteLoaded = false;
+router.afterEach(() => {
+  // Only set loading to false after the *initial* route is loaded
+  if (!initialRouteLoaded) {
+    isAppLoading.value = false;
+    initialRouteLoaded = true;
+  }
+});
 
 app.mount('#app');

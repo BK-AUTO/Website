@@ -12,22 +12,12 @@
       </div>
     </div>
     <div class="page-content">
-      <div class="manage-link">
-        <router-link to="/news/manage">{{ t('menu.news-manage') }}</router-link>
-      </div>
-      <div class="manage-link">
-        <router-link to="/project/manage">{{ t('menu.project-manage') }}</router-link>
-      </div>
-      <div class="manage-link">
-        <router-link to="/research/manage">{{ t('menu.research-manage') }}</router-link>
-      </div>
-      <div class="manage-link">
-        <router-link to="/course/manage">{{ t('menu.course-manage') }}</router-link>
-      </div>
-      <div class="manage-link">
-        <router-link to="/contact/manage">{{ t('menu.contact-manage') }}</router-link>
-      </div>
-      <div class="logout-btn" @click="handleLogout">{{ t('common.logout') }}</div>
+      <div class="manage-link"><a href="/news/manage">Quản lý Tin tức</a></div>
+      <div class="manage-link"><a href="/project/manage">Quản lý Dự án</a></div>
+      <div class="manage-link"><a href="/research/manage">Quản lý Nghiên cứu</a></div>
+      <div class="manage-link"><a href="/course/manage">Quản lý Khóa học</a></div>
+      <div class="manage-link"><a href="/contact/manage">Quản lý Liên hệ</a></div>
+      <div class="logout-btn" @click="submitLogout">Đăng xuất</div>
     </div>
   </div>
 </template>
@@ -44,7 +34,7 @@ useTitle('menu.dashboard');
 const { t } = useI18n();
 const isLoading = ref(false);
 
-const handleLogout = async () => {
+const submitLogout = async () => {
   try {
     await LoginService.logout();
   } catch (error) {
