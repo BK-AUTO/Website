@@ -97,12 +97,6 @@ const menus = computed(() => {
       title: t('menu.news'),
       to: '/news',
     },
-    {
-      key: 'menu.contact',
-      label: t('menu.contact'),
-      title: t('menu.contact'),
-      to: '/contact',
-    },
   ];
 });
 </script>
