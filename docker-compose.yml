@@ -1,4 +1,4 @@
-version: '3.0'
+version: '3.8'
 
 services:
   db:
@@ -7,10 +7,20 @@ services:
     restart: always
     ports:
       - "5433:5432"
+    volumes:
+      # Map the named volume 'bkauto' to the PostgreSQL data directory
+      - bkauto:/var/lib/postgresql/data
     environment:
       POSTGRES_DB: postgres
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: PlLcIne8Syc9e28KSioAeA/Vzz8=
+    healthcheck:
+      # Check if PostgreSQL server is accepting connections
+      test: ["CMD-SHELL", "pg_isready -U postgres -d postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
   backend:
     container_name: bkauto-be
     build:
@@ -24,7 +34,15 @@ services:
     volumes:
       - ./application.deploy.yml:/config/application.yml
     depends_on:
-      - db
+      db:
+        condition: service_healthy # Wait for db to be healthy
+    # Optional: Adjust healthcheck command based on your backend's health endpoint
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:6066/actuator/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
   frontend:
     container_name: bkauto-fe
     build:
@@ -38,6 +56,6 @@ services:
     depends_on:
       - backend
 
-volumes:  
-  bkauto:
-  
+volumes:
+  # Define the named volume for database persistence
+  bkauto: {}
