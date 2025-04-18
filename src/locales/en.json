@@ -45,8 +45,7 @@
   "prompt": {
     "sessionExpired": "Session Expired",
     "restartLogin": "Login will start from beginning",
-    "error": "An error happened",
-    "success": "Success"
+    "error": "An error happened"
   },
   "error": {
     "password": "Password must be at least 8 characters long, 1 uppercase letter and 1 special character",
