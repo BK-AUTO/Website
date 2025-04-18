@@ -36,14 +36,4 @@ app
 
 sessionInterceptor();
 
-// Add router navigation guard to control loading state
-let initialRouteLoaded = false;
-router.afterEach(() => {
-  // Only set loading to false after the *initial* route is loaded
-  if (!initialRouteLoaded) {
-    isAppLoading.value = false;
-    initialRouteLoaded = true;
-  }
-});
-
 app.mount('#app');
