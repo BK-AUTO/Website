@@ -51,15 +51,7 @@
     "password": "Password must be at least 8 characters long, 1 uppercase letter and 1 special character",
     "loginUnsuccessful": "The ID or password is incorrect.",
     "required": "Please input {0}",
-    "required2": "This field is required",
-    "invalidEmail": "Please enter a valid email address",
-    "invalidPhone": "Please enter a valid phone number (10-11 digits)",
-    "maxLength": "The input exceeds maximum allowed length",
-    "securityToken": "Security token is missing. Please refresh the page.",
-    "tooManySubmissions": "Too many submissions. Please try again later.",
-    "tooManyAttempts": "Too many attempts. Please try again in 15 minutes.",
-    "pleaseCheckForm": "Please check the form for errors",
-    "genericError": "An error occurred. Please try again."
+    "required2": "This field is required"
   },
 
   "dashboard": {
@@ -132,8 +124,7 @@
     "message": "Message",
     "enterMessage": "Describe more clearly the issue you are interested in",
     "send": "Send information",
-    "contactSaved": "Contact information has been saved",
-    "privacyNotice": "By submitting this form, you agree to our privacy policy. We collect your personal information only to respond to your inquiry and will not share it with third parties. Your data is securely stored and processed in accordance with applicable data protection laws."
+    "contactSaved": "Contact information has been saved"
   },
 
   "link": {
