@@ -170,19 +170,6 @@ const router = createRouter({
           component: () => import('../views/news/NewsDetails.vue'),
           props: true,
         },
-        {
-          path: '/contact/manage/',
-          name: 'menu.contact-manage',
-          component: () => import('../views/contact/ContactManage.vue'),
-          meta: {
-            requireAuth: true,
-          },
-        },
-        {
-          path: '/contact',
-          name: 'menu.contact',
-          component: () => import('../views/contact/Contact.vue'),
-        },
       ],
     },
     {
