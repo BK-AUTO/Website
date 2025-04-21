@@ -19,11 +19,12 @@
         </div>
         <div class="col-12">
           <QuillEditor
-            theme="snow"
+            theme="bubble"
             :toolbar="[]"
             v-model:content="newsContent"
             @ready="quill = $event"
-          />
+            readOnly ="true"
+          /> 
         </div>
       </div>
     </div>
@@ -38,6 +39,8 @@ import NewsService from '@/services/NewsService';
 import { onMounted, reactive, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { useRoute } from 'vue-router';
+import { QuillEditor } from '@vueup/vue-quill';
+import '@vueup/vue-quill/dist/vue-quill.bubble.css';
 
 const route = useRoute();
 const newsId = route.params.id;

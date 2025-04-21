@@ -16,10 +16,11 @@
         </div>
         <div class="col-12">
           <QuillEditor
-            theme="snow"
+            theme="bubble"
             :toolbar="[]"
             v-model:content="projectContent"
             @ready="quill = $event"
+            readOnly="true"
           />
         </div>
       </div>
@@ -35,6 +36,8 @@ import ProjectService from '@/services/ProjectService';
 import { onMounted, reactive, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { useRoute } from 'vue-router';
+import { QuillEditor } from '@vueup/vue-quill';
+import '@vueup/vue-quill/dist/vue-quill.bubble.css';
 
 const route = useRoute();
 const projectId = route.params.id;
@@ -76,7 +79,7 @@ const getProject = async () => {
 <style lang="scss" scoped>
 .page-header {
   background: linear-gradient(0deg, rgba(0, 0, 0, 0.64), rgba(0, 0, 0, 0.64)),
-    url('@/assets/img/background/bg-research.webp');
+    url('@/assets/img/background/bg-project.webp');
   background-size: cover;
 }
 
