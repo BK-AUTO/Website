@@ -23,21 +23,87 @@
     <meta property="twitter:description" content="Câu lạc bộ BK-AUTO được thành lập vào năm 2010 với mục đích tạo sân chơi nghiên cứu khoa học cho sinh viên trường Đại học Bách Khoa Hà Nội nói chung và sinh viên bộ môn Ô tô và Xe chuyên dụng Viện Cơ Khí Động lực nói riêng." />
     <meta property="twitter:image" content="https://i.imgur.com/4yX5pPH.png" />
     
+    <!-- Structured Data for Google Sitelinks -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "url": "https://bkauto.vn",
+      "name": "BK-AUTO - Câu lạc bộ Ô tô Đại học Bách Khoa Hà Nội",
+      "logo": "https://bkauto.vn/src/assets/img/bkauto-logo.svg",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://bkauto.vn/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      },
+      "sameAs": [
+        "https://www.facebook.com/bkauto.vn"
+      ]
+    }
+    </script>
+    
+    <!-- SiteLinks SearchBox structured data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "url": "https://bkauto.vn/",
+      "name": "BK-AUTO",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://bkauto.vn/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+    
+    <!-- SiteNavigationElement structured data for sitelinks -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "itemListElement": [
+        {
+          "@type": "SiteNavigationElement",
+          "position": 1,
+          "name": "Giới thiệu",
+          "description": "Về Câu lạc bộ Ô tô Đại học Bách Khoa Hà Nội",
+          "url": "https://bkauto.vn/about"
+        },
+        {
+          "@type": "SiteNavigationElement",
+          "position": 2,
+          "name": "Tin tức",
+          "description": "Tin tức và thông báo từ BK-AUTO",
+          "url": "https://bkauto.vn/news"
+        },
+        {
+          "@type": "SiteNavigationElement",
+          "position": 3,
+          "name": "Dự án",
+          "description": "Các dự án nghiên cứu của BK-AUTO",
+          "url": "https://bkauto.vn/project"
+        },
+        {
+          "@type": "SiteNavigationElement",
+          "position": 4,
+          "name": "Khóa học",
+          "description": "Các khóa học do BK-AUTO tổ chức",
+          "url": "https://bkauto.vn/course"
+        },
+        {
+          "@type": "SiteNavigationElement",
+          "position": 5,
+          "name": "Nghiên cứu",
+          "description": "Công trình nghiên cứu của BK-AUTO",
+          "url": "https://bkauto.vn/research"
+        }
+      ]
+    }
+    </script>
+    
     <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Vollkorn:ital,wght@0,400..900;1,400..900&display=swap"
-      rel="stylesheet"
-    />
+    <!-- ...existing font imports... -->
   </head>
   <body>
     <div id="app"></div>
