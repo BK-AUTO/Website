@@ -2,7 +2,7 @@ import { useHead } from '@unhead/vue';
 import { useI18n } from 'vue-i18n';
 import { Modal, notification } from 'ant-design-vue';
 
-let siteTitle = 'BK Auto';
+let siteTitle = 'BK-Auto';
 let separator = '|';
 
 export const useTitle = (label) => {

@@ -4,7 +4,7 @@
     <div class="login-card">
       <a-flex vertical class="logo-container">
         <img class="logo" src="@/assets/img/bkauto-logo.svg" alt="Logo" />
-        <span class="title">BK Auto</span>
+        <span class="title">BK-Auto</span>
       </a-flex>
       <a-flex vertical class="login-form">
         <a-form

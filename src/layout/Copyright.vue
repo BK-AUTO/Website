@@ -1,7 +1,7 @@
 <template>
   <div class="copyright">
     <a-flex justify="center">
-      Copyright © 2024 <a href="/">BK AUTO.</a>
+      Copyright © 2024 <a href="/">BK-AUTO.</a>
       All Right Reserved.
     </a-flex>
   </div>
