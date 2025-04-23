@@ -6,7 +6,7 @@
       <div class="header-content">
         <div class="row">
           <div class="col-12 col-lg-7">
-            <div class="title">Câu lạc bộ BK-Auto</div>
+            <div class="title">Câu lạc bộ BK-AUTO</div>
           </div>
         </div>
       </div>
