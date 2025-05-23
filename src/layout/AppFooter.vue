@@ -99,7 +99,7 @@ const { t } = useI18n();
 <style lang="scss" scoped>
 .page-footer {
   background: linear-gradient(0deg, rgba(1, 8, 9, 0.8), rgba(1, 8, 9, 0.8)),
-    url('@/assets/img/background/bg-footer.webp');
+    url('@/assets/img/background/488206257_1306091547716154_6783230239231570049_n.jpg');
   background-size: cover;
 
   * {
