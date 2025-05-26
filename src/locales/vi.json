@@ -45,7 +45,9 @@
   "prompt": {
     "sessionExpired": "Phiên hết hạn",
     "restartLogin": "Vui lòng đăng nhập lại",
-    "error": "Có lỗi xảy ra"
+    "error": "Có lỗi xảy ra",
+    "releaseCountdown": "Đếm ngược đến ngày ra mắt!",
+    "releasePrompt": "Chúng tôi sắp ra mắt!"
   },
   "error": {
     "password": "Mật khẩu cần có ít nhất 8 ký tự, bao gồm 1 ký tự viết hoa và 1 ký tự đặc biệt.",

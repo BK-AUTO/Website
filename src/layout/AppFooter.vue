@@ -7,7 +7,7 @@
       </div>
       <div class="info">
         <div class="row">
-          <div class="col-12 col-lg-5">
+          <div class="col-12 col-lg-8">
             <div class="title">{{ t('link.address') }}</div>
             <div class="divider"></div>
             <ul>
@@ -53,26 +53,7 @@
             </ul>
           </div>
 
-          <div class="col-6 col-lg-3">
-            <div class="title">{{ t('link.link') }}</div>
-            <div class="divider"></div>
-            <ul>
-              <li>
-                <p class="item-value"><a href="about-us">{{ t('link.about') }}</a></p>
-              </li>
-              <li>
-                <p class="item-value"><a href="about-us#intro">{{ t('link.intro') }}</a></p>
-              </li>
-              <li>
-                <p class="item-value"><a href="about-us#milestones">{{ t('link.prize') }}</a></p>
-              </li>
-              <li>
-                <p class="item-value"><a href="research">{{ t('link.research') }}</a></p>
-              </li>
-            </ul>
-          </div>
-
-          <div class="col-6 col-lg-4">
+          <div class="col-12 col-lg-4">
             <div class="title">{{ t('link.contact') }}</div>
             <div class="divider"></div>
             <div class="contacts">
