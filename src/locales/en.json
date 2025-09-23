@@ -176,7 +176,7 @@
       "fullName": "Full Name",
       "fullNamePlaceholder": "Enter your full name",
       "mssv": "Student ID",
-      "mssvPlaceholder": "Example: 202500001 (20210000-20250000)",
+      "mssvPlaceholder": "Example: 202500001 (20210000-202599999)",
       "school": "School/University",
       "schoolPlaceholder": "Example: Hanoi University of Science and Technology",
       "majorClass": "Major and Class",

@@ -176,7 +176,7 @@
       "fullName": "Họ và tên",
       "fullNamePlaceholder": "Nhập họ và tên đầy đủ",
       "mssv": "Mã số sinh viên",
-      "mssvPlaceholder": "Ví dụ: 202500001 (20210000-20250000)",
+      "mssvPlaceholder": "Ví dụ: 202500001 (20210000-202599999)",
       "school": "Trường đang theo học",
       "schoolPlaceholder": "Ví dụ: Đại học Bách khoa Hà Nội",
       "majorClass": "Ngành và lớp",

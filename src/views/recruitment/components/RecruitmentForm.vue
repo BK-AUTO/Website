@@ -300,7 +300,7 @@ const rules = computed(() => {
       validator: (rule, value) => {
         if (!value) return Promise.resolve();
         const mssv = parseInt(value);
-        if (isNaN(mssv) || mssv < 20210000 || mssv > 20250000) {
+        if (isNaN(mssv) || mssv < 20210000 || mssv > 202599999) {
           return Promise.reject(t('recruitment.validation.mssvRange'));
         }
         return Promise.resolve();
