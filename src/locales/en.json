@@ -29,7 +29,8 @@
     "news": "News",
 
     "contact-manage": "Manage contact",
-    "contact": "Contact"
+    "contact": "Contact",
+    "memberRecruitment": "Member Recruitment"
   },
   "common": {
     "login": "Login",
@@ -40,7 +41,8 @@
     "accessNow": "Find out now",
     "registerNow": "Register now",
     "viewAll": "View all",
-    "collapse": "Collapse"
+    "collapse": "Collapse",
+    "close": "Close"
   },
   "prompt": {
     "sessionExpired": "Session Expired",
@@ -135,5 +137,100 @@
     "intro": "Introduction",
     "prize": "Awards",
     "research": "Featured Articles"
+  },
+
+  "recruitment": {
+    "title": "F16 BK-AUTO CLUB MEMBER RECRUITMENT",
+    "subtitle": "Join our automotive technology research and development team",
+    "timeline": {
+      "title": "Event Timeline:",
+      "round1": "Round 1: Registration",
+      "round1_detail": "September 25, 2025 - October 3, 2025",
+      "round2": "Round 2: Interview",
+      "round2_detail": "October 5, 2025",
+      "round3": "Round 3: Department Challenge Week",
+      "round3_detail": "Start from October 9, 2025"
+    },
+    "target": {
+      "title": "Target Audience:",
+      "description": "All students from HUST and other universities with passion for learning, exchanging knowledge and researching in automotive field."
+    },
+    "notes": {
+      "title": "IMPORTANT NOTES",
+      "note1": "Each applicant can only submit the form once. Please check your answers carefully before submitting.",
+      "note2": "Interview time, location and results will be notified via email.",
+      "note3": "If you have scheduling conflicts on interview day, please message BK-AUTO Fanpage or email support{'@'}bkauto.vn immediately"
+    },
+    "contact": {
+      "title": "BK-AUTO CLUB",
+      "email": "Email",
+      "phone": "Contact",
+      "fanpage": "Fanpage"
+    },
+    "form": {
+      "title": "Member Registration Form",
+      "studentType": "You are a student of:",
+      "hustStudent": "HUST Student",
+      "externalStudent": "External Student",
+      "personalInfo": "Personal Information",
+      "fullName": "Full Name",
+      "fullNamePlaceholder": "Enter your full name",
+      "mssv": "Student ID",
+      "mssvPlaceholder": "Example: 202500001 (20210000-20250000)",
+      "school": "School/University",
+      "schoolPlaceholder": "Example: Hanoi University of Science and Technology",
+      "majorClass": "Major and Class",
+      "majorClassPlaceholder": "Example: Automotive Engineering - TE1-01",
+      "major": "Major",
+      "majorPlaceholder": "Example: Automotive Engineering",
+      "email": "Email",
+      "hustEmailPlaceholder": "email{'@'}sis.hust.edu.vn",
+      "personalEmailPlaceholder": "example@gmail.com",
+      "phone": "Phone Number",
+      "phonePlaceholder": "Example: 0987654321",
+      "departmentSelection": "Department Selection",
+      "mainDepartment": "Main Department (select 1)",
+      "subDepartments": "Skill Departments (multiple selection)",
+      "subDepartmentNote": "Skill departments help you develop complementary skills for your main expertise",
+      "cvUpload": "CV Upload",
+      "cvLink": "CV/Portfolio Link",
+      "cvLinkPlaceholder": "https://drive.google.com/... or other link",
+      "cvUploadNote": "You can upload your CV to Google Drive, OneDrive or other platforms and paste the link here",
+      "submit": "Submit Application",
+      "submitSuccess": "Application submitted successfully!",
+      "submitError": "An error occurred while submitting. Please try again later."
+    },
+    "departments": {
+      "ai": "AI for Automobile",
+      "electrical": "Electrical - Electronics",
+      "simulation": "Simulation",
+      "experiment": "Experiment",
+      "communication": "Communication",
+      "english": "English",
+      "manufacturing": "Manufacturing - Mechanics"
+    },
+    "validation": {
+      "studentTypeRequired": "Please select student type",
+      "fullNameRequired": "Please enter full name",
+      "fullNameMin": "Full name must be at least 2 characters",
+      "mssvRequired": "Please enter student ID",
+      "mssvRange": "Student ID must be between 20210000 and 20250000",
+      "schoolRequired": "Please enter school name",
+      "majorClassRequired": "Please enter major and class",
+      "majorRequired": "Please enter major",
+      "emailRequired": "Please enter email",
+      "emailInvalid": "Invalid email format",
+      "hustEmailInvalid": "Email must end with {'@'}sis.hust.edu.vn or {'@'}hust.edu.vn",
+      "phoneRequired": "Please enter phone number",
+      "phoneInvalid": "Invalid phone number format",
+      "mainDepartmentRequired": "Please select main department",
+      "cvLinkRequired": "Please enter CV link",
+      "cvLinkInvalid": "Invalid CV link format"
+    },
+    "success": {
+      "title": "Registration Successful!",
+      "message": "Thank you for applying to join BK-AUTO Club",
+      "description": "We will contact you via email before October 5, 2025. Or you can follow the information on the Club's Fanpage!"
+    }
   }
 }

@@ -16,10 +16,22 @@
             <div class="subtitle2">
               {{ t('dashboard.description') }}
             </div>
-            <a-button type="primary" @click="redirectToAboutPage">
-              <span>{{ t('common.accessNow') }}</span>
-              <ArrowRightOutlined />
-            </a-button>
+            <div class="action-buttons">
+              <a-button type="primary" @click="redirectToAboutPage">
+                <span>{{ t('common.accessNow') }}</span>
+                <ArrowRightOutlined />
+              </a-button>
+              <a-button 
+                size="large"
+                @click="redirectToRecruitment"
+                class="recruitment-button"
+              >
+                <span>
+                  <span>{{ t('menu.memberRecruitment') }}</span>
+                </span>
+                <UserAddOutlined />
+              </a-button>
+            </div>
           </div>
         </div>
       </div>
@@ -53,7 +65,7 @@ import Introduction from './components/Introduction.vue';
 import { useTitle } from '@/composables/common.js';
 import { ref } from 'vue';
 import { useI18n } from 'vue-i18n';
-import { ArrowRightOutlined } from '@ant-design/icons-vue';
+import { ArrowRightOutlined, UserAddOutlined } from '@ant-design/icons-vue';
 import router from '@/router';
 
 useTitle('menu.dashboard');
@@ -62,6 +74,10 @@ const isLoading = ref(false);
 
 const redirectToAboutPage = () => {
   router.push('/about-us');
+};
+
+const redirectToRecruitment = () => {
+  router.push('/member-recruitment');
 };
 </script>
 
@@ -87,6 +103,71 @@ const redirectToAboutPage = () => {
   .subtitle2 {
     line-height: 20px;
     margin-bottom: 32px;
+  }
+
+  .action-buttons {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    
+    .recruitment-button {
+      background: #3ac569 !important;
+      border: none !important;
+      border-radius: 0 !important;
+      font-weight: 600;
+      font-size: 16px;
+      height: 50px;
+      padding: 0 24px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      
+      &:hover {
+        background: #2d9d4a !important;
+        transform: translateY(-3px);
+        box-shadow: 0 6px 20px rgba(58, 197, 105, 0.4);
+      }
+      
+      &:active {
+        transform: translateY(-1px);
+        box-shadow: 0 3px 10px rgba(58, 197, 105, 0.6);
+      }
+      
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+        transition: left 0.5s ease;
+      }
+      
+      &:hover::before {
+        left: 100%;
+      }
+      
+      span {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        position: relative;
+        z-index: 1;
+      }
+    }
+  }
+
+  @keyframes pulse {
+    0% {
+      box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+    }
+    50% {
+      box-shadow: 0 4px 25px rgba(255, 107, 107, 0.6);
+    }
+    100% {
+      box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+    }
   }
 }
 </style>

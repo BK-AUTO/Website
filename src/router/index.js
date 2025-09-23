@@ -170,6 +170,14 @@ const router = createRouter({
           component: () => import('../views/news/NewsDetails.vue'),
           props: true,
         },
+        {
+          path: '/member-recruitment',
+          name: 'member-recruitment',
+          component: () => import('../views/recruitment/MemberRecruitment.vue'),
+          meta: {
+            title: 'Tuyển thành viên'
+          }
+        },
       ],
     },
     {

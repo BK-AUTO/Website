@@ -29,7 +29,8 @@
     "news": "Tin tức",
 
     "contact-manage": "Quản lý liên hệ",
-    "contact": "Liên hệ"
+    "contact": "Liên hệ",
+    "memberRecruitment": "Tuyển thành viên"
   },
   "common": {
     "login": "Đăng nhập",
@@ -40,7 +41,8 @@
     "accessNow": "Tìm hiểu ngay",
     "registerNow": "Đăng ký ngay",
     "viewAll": "Xem tất cả",
-    "collapse": "Thu gọn"
+    "collapse": "Thu gọn",
+    "close": "Đóng"
   },
   "prompt": {
     "sessionExpired": "Phiên hết hạn",
@@ -135,5 +137,100 @@
     "intro": "Giới thiệu",
     "prize": "Giải thưởng",
     "research": "Các bài viết nổi bật"
+  },
+
+  "recruitment": {
+    "title": "TUYỂN THÀNH VIÊN CLB BK-AUTO F16",
+    "subtitle": "Gia nhập đội ngũ nghiên cứu và phát triển công nghệ ô tô",
+    "timeline": {
+      "title": "Timeline chi tiết sự kiện:",
+      "round1": "Vòng 1: Đăng ký",
+      "round1_detail": "25/9/2025 - 03/10/2025",
+      "round2": "Vòng 2: Phỏng vấn",
+      "round2_detail": "Ngày 05/10/2025",
+      "round3": "Vòng 3: Tuần thử thách của các mảng",
+      "round3_detail": "Bắt đầu từ ngày 09/10/2025"
+    },
+    "target": {
+      "title": "Đối tượng:",
+      "description": "Tất cả các bạn sinh viên trong và ngoài trường với tinh thần giao lưu, học hỏi và nghiên cứu về lĩnh vực ô tô."
+    },
+    "notes": {
+      "title": "LƯU Ý",
+      "note1": "Mỗi ứng viên chỉ được điền đơn một lần duy nhất. Các bạn hãy kiểm tra kỹ câu trả lời trước khi gửi đơn cho chúng mình nhé.",
+      "note2": "Thời gian, địa điểm và kết quả phỏng vấn sẽ được thông báo qua email.",
+      "note3": "Nếu các bạn trùng hoặc bận việc vào ngày phỏng vấn, hãy nhắn tin ngay cho Fanpage CLB BK-AUTO hoặc email đến địa chỉ mail support{'@'}bkauto.vn"
+    },
+    "contact": {
+      "title": "Liên lạc CLB BK-AUTO",
+      "email": "Email",
+      "phone": "Liên hệ",
+      "fanpage": "Fanpage"    
+    },
+    "form": {
+      "title": "Đơn đăng ký tuyển thành viên",
+      "studentType": "Bạn là sinh viên của:",
+      "hustStudent": "HUST",
+      "externalStudent": "ngoài HUST",
+      "personalInfo": "Thông tin cá nhân",
+      "fullName": "Họ và tên",
+      "fullNamePlaceholder": "Nhập họ và tên đầy đủ",
+      "mssv": "Mã số sinh viên",
+      "mssvPlaceholder": "Ví dụ: 202500001 (20210000-20250000)",
+      "school": "Trường đang theo học",
+      "schoolPlaceholder": "Ví dụ: Đại học Bách khoa Hà Nội",
+      "majorClass": "Ngành và lớp",
+      "majorClassPlaceholder": "Ví dụ: Kỹ thuật ô tô - TE1-01",
+      "major": "Ngành học",
+      "majorPlaceholder": "Ví dụ: Kỹ thuật ô tô",
+      "email": "Email",
+      "hustEmailPlaceholder": "email{'@'}sis.hust.edu.vn",
+      "personalEmailPlaceholder": "example@gmail.com",
+      "phone": "Số điện thoại",
+      "phonePlaceholder": "Ví dụ: 0987654321",
+      "departmentSelection": "Lựa chọn mảng bạn muốn ứng tuyển",
+      "mainDepartment": "Mảng chính (chọn 1 mảng)",
+      "subDepartments": "Mảng phụ kỹ năng (có thể chọn nhiều)",
+      "subDepartmentNote": "Các mảng phụ giúp bạn phát triển kỹ năng bổ trợ cho chuyên môn chính",
+      "cvUpload": "Tải lên CV",
+      "cvLink": "Link CV/Portfolio (gửi theo định dạng PDF):",
+      "cvLinkPlaceholder": "https://drive.google.com/... hoặc link khác",
+      "cvUploadNote": "Bạn có thể upload CV lên Google Drive, OneDrive hoặc các nền tảng khác rồi paste link (lưu ý: link dẫn trực tiếp đến file CV chứ không phải dẫn đến folder chứa CV) vào đây. CHÚ Ý nhớ mở quyền truy cập 'người xem' trước khi gửi đơn. CLB sẽ không chịu trách nhiệm nếu bạn không mở quyền truy cập hoặc gửi file không phải định dạng PDF hoặc nội dung không phải file CV của bạn.",
+      "submit": "Gửi đơn đăng ký",
+      "submitSuccess": "Đơn đăng ký đã được gửi thành công!",
+      "submitError": "Có lỗi xảy ra khi gửi đơn. Vui lòng thử lại sau."
+    },
+    "departments": {
+      "ai": "AI for Automobile",
+      "electrical": "Điện - Điện tử",
+      "simulation": "Mô phỏng",
+      "experiment": "Thí nghiệm",
+      "communication": "Truyền thông",
+      "english": "Tiếng Anh",
+      "manufacturing": "Gia công - Cơ khí"
+    },
+    "validation": {
+      "studentTypeRequired": "Vui lòng chọn loại sinh viên",
+      "fullNameRequired": "Vui lòng nhập họ và tên",
+      "fullNameMin": "Họ tên phải có ít nhất 2 ký tự",
+      "mssvRequired": "Vui lòng nhập mã số sinh viên",
+      "mssvRange": "MSSV phải trong khoảng từ 20210000 đến 20250000",
+      "schoolRequired": "Vui lòng nhập tên trường",
+      "majorClassRequired": "Vui lòng nhập ngành và lớp",
+      "majorRequired": "Vui lòng nhập ngành học",
+      "emailRequired": "Vui lòng nhập email",
+      "emailInvalid": "Email không đúng định dạng",
+      "hustEmailInvalid": "Email phải có đuôi {'@'}sis.hust.edu.vn hoặc {'@'}hust.edu.vn",
+      "phoneRequired": "Vui lòng nhập số điện thoại",
+      "phoneInvalid": "Số điện thoại không đúng định dạng",
+      "mainDepartmentRequired": "Vui lòng chọn mảng chính",
+      "cvLinkRequired": "Vui lòng nhập link CV",
+      "cvLinkInvalid": "Link CV không đúng định dạng"
+    },
+    "success": {
+      "title": "Đăng ký thành công!",
+      "message": "Cảm ơn bạn đã đăng ký tham gia CLB BK-AUTO",
+      "description": "Chúng mình sẽ gửi kết quả vòng đơn trước ngày 05/10/2025 qua email. Hoặc bạn có thể theo dõi thông tin trên Fanpage của CLB nhé!"
+    }
   }
 }
