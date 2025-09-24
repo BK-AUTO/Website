@@ -209,10 +209,9 @@ const handleFormSubmit = async (formData) => {
       mainDepartment: formData.mainDepartment,
       subDepartments: JSON.stringify(formData.subDepartments),
       cvLink: formData.cvLink,
-      resendApiKey: 're_8qQ8DT8z_3KopiBrxRTDymkLUNijJM2pi'
     });
 
-    const response = await fetch(`https://script.google.com/macros/s/AKfycbzIQrn7Lv2tiu3Qj-yxphfHnT1ojxvvQnLnSt2lXFSAC3fiyzw2FbHT5wFWU49-K3U2Kg/exec?${params.toString()}`);
+    const response = await fetch(`https://script.google.com/macros/s/AKfycbx26pfq55Zau1tsBu3EIQIgoZEegUe9gKa66i256FLP7E3_cop_7u_ZeMGfNyQe3QY_Xw/exec?${params.toString()}`);
     
     const result = await response.text();
     
