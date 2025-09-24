@@ -313,12 +313,14 @@ const rules = computed(() => {
     { type: 'email', message: t('recruitment.validation.emailInvalid') }
   ];
   
+  // Only add HUST email pattern for HUST students
   if (isHustStudent) {
     emailRules.push({
       pattern: /@(sis\.)?hust\.edu\.vn$/,
       message: t('recruitment.validation.hustEmailInvalid')
     });
   }
+  // For non-HUST students, any valid email format is acceptable
   
   return {
     studentType: [
