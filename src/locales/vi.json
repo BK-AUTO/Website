@@ -197,7 +197,7 @@
       "subDepartments": "Mảng phụ kỹ năng (có thể chọn nhiều)",
       "subDepartmentNote": "Các mảng phụ giúp bạn phát triển kỹ năng bổ trợ cho chuyên môn chính",
       "cvUpload": "Tải lên CV",
-      "cvUploadLabel": "Kéo thả file CV vào đây hoặc <span class=\"filepond--label-action\">Chọn file</span><br>Hỗ trợ: PDF, DOC, DOCX (Tối đa 5MB)",
+      "cvUploadLabel": "Kéo thả file CV vào đây hoặc <span class=\"filepond--label-action\">Chọn file</span><br>Hỗ trợ: PDF (Tối đa 5MB)",
       "cvLink": "Link CV/Portfolio (gửi theo định dạng PDF):",
       "cvLinkPlaceholder": "https://drive.google.com/... hoặc link khác",
       "cvUploadNote": "Bạn có thể upload CV lên Google Drive, OneDrive hoặc các nền tảng khác rồi paste link (lưu ý: link dẫn trực tiếp đến file CV chứ không phải dẫn đến folder chứa CV) vào đây. CHÚ Ý nhớ mở quyền truy cập 'người xem' trước khi gửi đơn. CLB sẽ không chịu trách nhiệm nếu bạn không mở quyền truy cập hoặc gửi file không phải định dạng PDF hoặc nội dung không phải file CV của bạn.",
