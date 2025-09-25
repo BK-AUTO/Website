@@ -34,7 +34,7 @@ import { computed } from 'vue';
 import raw_profile_data from '/src/assets/data/manager_profiles.json';
 
 // Import all member images using glob
-const memberImages = import.meta.glob('../../assets/img/member/*.webp', { eager: true });
+const memberImages = import.meta.glob('../../assets/img/member/**/*.webp', { eager: true });
 const { t } = useI18n();
 defineProps({
   title: String,
@@ -48,10 +48,10 @@ const profile_data = computed(() => {
       return profile;
     }
 
-    // Extract filename from the JSON path
-    const filename = profile.thumbnail.split('/').pop();
+    // Extract the relative path from src/assets/img/member/
+    const relativePath = profile.thumbnail.replace('src/assets/img/member/', '');
     // Construct the key for the glob import (relative path from this component)
-    const globKey = `../../assets/img/member/${filename}`;
+    const globKey = `../../assets/img/member/${relativePath}`;
 
     if (memberImages[globKey]) {
       // Get the processed URL from the imported module

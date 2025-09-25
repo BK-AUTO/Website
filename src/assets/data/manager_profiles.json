@@ -1,65 +1,83 @@
 [
   {
-    "name": "Nguyễn Văn Hiếu",
+    "name": "Chu Tiến Đạt",
     "role1": "Chủ nhiệm",
-    "role2": "Trưởng mảng Mô Phỏng",
-    "MSSV": "20210353",
-    "title": "K66 CTTT kỹ thuật ô tô ĐH Bách Khoa Hà Nội",
-    "email": "hieu.nv210353@sis.hust.edu.vn",
-    "thumbnail": "src/assets/img/member/NguyenVanHieu.webp"
-  },
-  {
-    "name": "Trương Hoàng Long",
-    "role1": "Phó Chủ nhiệm",
-    "role2": "Trưởng mảng Điện - Điện tử",
-    "MSSV": "20210551",
-    "title": "K66 CTTT Kỹ thuật ô tô ĐH Bách Khoa Hà Nội",
-    "email": "long.th210551@sis.hust.edu.vn",
-    "thumbnail": "src/assets/img/member/TruongHoangLong.webp"
-  },
-  {
-    "name": "Hà Minh Hoàng",
-    "role1": "Phó Chủ nhiệm",
-    "role2": "Trưởng mảng Gia công",
-    "MSSV": "20210366",
-    "title": "K66 CTTT Kỹ thuật ô tô ĐH Bách Khoa Hà Nội",
-    "email": "hoang.hm210366@sis.hust.edu.vn",
-    "thumbnail": "src/assets/img/member/HaMinhHoang.webp"
-  },
-  {
-    "name": "Cao Văn Tú",
-    "role1": "Phó chủ nhiệm",
-    "role2": "Trưởng mảng Truyền thông",
-    "MSSV": "20207178",
-    "title": "K65 CTTT Kỹ thuật ô tô ĐH Bách Khoa Hà Nội",
-    "email": "tu.cv207178@sis.hust.edu.vn",
-    "thumbnail": "src/assets/img/member/CaoVanTu.webp"
-  },
+    "role2": "Trưởng mảng Thí nghiệm",
+    "MSSV": "20227827",
+    "title": "K67 CTTT kỹ thuật ô tô ĐH Bách Khoa Hà Nội",
+    "email": "Dat.CT227827@sis.hust.edu.vn",
+    "thumbnail": "src/assets/img/member/2526/ChuTienDat.webp"
+  },  
   {
     "name": "Phạm Việt Anh",
-    "role1": "Ủy viên BQL",
+    "role1": "Phó Chủ nhiệm",
     "role2": "Trưởng mảng AI for Automobile",
     "MSSV": "20238743",
     "title": "K68 CTTT Kỹ thuật ô tô ĐH Bách Khoa Hà Nội",
-    "email": "anh.pv238743@gmail.com",
-    "thumbnail": "src/assets/img/member/PhamVietAnh.webp"
+    "email": "Anh.PV238743@sis.hust.edu.vn",
+    "thumbnail": "src/assets/img/member/2526/PhamVietAnh.webp"
   },
   {
-    "name": "Phạm Quốc Anh",
+    "name": "Phùng Thị Mỹ Lệ",
+    "role1": "Phó chủ nhiệm",
+    "role2": "Trưởng mảng Truyền thông",
+    "MSSV": "20238415",
+    "title": "K68 Kỹ thuật ô tô ĐH Bách Khoa Hà Nội",
+    "email": "Le.PTM238415@sis.hust.edu.vn",
+    "thumbnail": "src/assets/img/member/2526/PhungThiMyLe.webp"
+  },
+
+  {
+    "name": "Đinh Duy Biên",
+    "role1": "Phó Chủ nhiệm",
+    "role2": "Trưởng mảng Mô Phỏng",
+    "MSSV": "20227562",
+    "title": "K67 Kỹ thuật ô tô ĐH Bách Khoa Hà Nội",
+    "email": "Bien.DD227562@sis.hust.edu.vn",
+    "thumbnail": "src/assets/img/member/2526/DinhDuyBien.webp"
+  },
+  {
+    "name": "Nguyễn Minh Đức",
     "role1": "Ủy viên BQL",
-    "role2": "Trưởng mảng Thí nghiệm",
-    "MSSV": "20210081",
-    "title": "K66 Kỹ thuật ô tô ĐH Bách Khoa Hà Nội",
-    "email": "anh.pq210081@sis.hust.edu.vn",
-    "thumbnail": "src/assets/img/member/PhamQuocAnh.webp"
+    "role2": "Trưởng mảng Điện - Điện tử",
+    "MSSV": "20238346",
+    "title": "K68 Kỹ thuật ô tô ĐH Bách Khoa Hà Nội",
+    "email": "Duc.NM238346@sis.hust.edu.vn",
+    "thumbnail": "src/assets/img/member/2526/NguyenMinhDuc.webp"
   },
   {
-    "name": "Chu Tiến Đạt",
+    "name": "Trần Thành Hưng",
+    "role1": "Ủy viên BQL",
+    "role2": "Trưởng mảng Cơ Khí",
+    "MSSV": "20227521",
+    "title": "K67 Kỹ thuật ô tô ĐH Bách Khoa Hà Nội",
+    "email": "Hung.TT227521@sis.hust.edu.vn",
+    "thumbnail": "src/assets/img/member/2526/TranThanhHung.webp"
+  },
+  {
+    "name": "Bùi Đức Tính",
+    "role1": "Ủy viên BQL",
+    "role2": "Phó mảng Thí nghiệm",
+    "MSSV": "20227686",
+    "title": "K67 Kỹ thuật ô tô ĐH Bách Khoa Hà Nội",
+    "email": "Tinh.BD227686@sis.hust.edu.vn",
+    "thumbnail": "https://as1.ftcdn.net/v2/jpg/05/16/27/58/1000_F_516275801_f3Fsp17x6HQK0xQgDQEELoTuERO4SsWV.jpg"
+  },
+    {
+    "name": "Nguyễn Mạnh Tuấn",
     "role1": "Ủy viên BQL",
     "role2": "Trưởng mảng Tiếng Anh",
-    "MSSV": "20227827",
-    "title": "K67 CTTT Kỹ thuật ô tô ĐH Bách Khoa Hà Nội",
-    "email": "dat.ct227827@sis.hust.edu.vn",
-    "thumbnail": "src/assets/img/member/ChuTienDat.webp"
+    "MSSV": "20238506",
+    "title": "K68 Kỹ thuật ô tô ĐH Bách Khoa Hà Nội",
+    "email": "Tuan.NM238506@sis.hust.edu.vn",
+    "thumbnail": "src/assets/img/member/2526/NguyenManhTuan.webp"
+  },
+    {
+    "name": "Phạm Huy Hoàng",
+    "role1": "Thư ký",
+    "MSSV": "20238384",
+    "title": "K68 Kỹ thuật ô tô ĐH Bách Khoa Hà Nội",
+    "email": "Hoang.PH238384@sis.hust.edu.vn",
+    "thumbnail": "src/assets/img/member/2526/PhamHuyHoang.webp"
   }
 ]

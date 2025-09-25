@@ -1,0 +1,65 @@
+[
+  {
+    "name": "Nguyễn Văn Hiếuư",
+    "role1": "Chủ nhiệm",
+    "role2": "Trưởng mảng Mô Phỏng",
+    "MSSV": "20210353",
+    "title": "K66 CTTT kỹ thuật ô tô ĐH Bách Khoa Hà Nội",
+    "email": "hieu.nv210353@sis.hust.edu.vn",
+    "thumbnail": "src/assets/img/member/ChuTienDat.JPG"
+  },
+  {
+    "name": "Trương Hoàng Long",
+    "role1": "Phó Chủ nhiệm",
+    "role2": "Trưởng mảng Điện - Điện tử",
+    "MSSV": "20210551",
+    "title": "K66 CTTT Kỹ thuật ô tô ĐH Bách Khoa Hà Nội",
+    "email": "long.th210551@sis.hust.edu.vn",
+    "thumbnail": "src/assets/img/member/TruongHoangLong.webp"
+  },
+  {
+    "name": "Hà Minh Hoàng",
+    "role1": "Phó Chủ nhiệm",
+    "role2": "Trưởng mảng Gia công",
+    "MSSV": "20210366",
+    "title": "K66 CTTT Kỹ thuật ô tô ĐH Bách Khoa Hà Nội",
+    "email": "hoang.hm210366@sis.hust.edu.vn",
+    "thumbnail": "src/assets/img/member/HaMinhHoang.webp"
+  },
+  {
+    "name": "Cao Văn Tú",
+    "role1": "Phó chủ nhiệm",
+    "role2": "Trưởng mảng Truyền thông",
+    "MSSV": "20207178",
+    "title": "K65 CTTT Kỹ thuật ô tô ĐH Bách Khoa Hà Nội",
+    "email": "tu.cv207178@sis.hust.edu.vn",
+    "thumbnail": "src/assets/img/member/CaoVanTu.webp"
+  },
+  {
+    "name": "Phạm Việt Anh",
+    "role1": "Ủy viên BQL",
+    "role2": "Trưởng mảng AI for Automobile",
+    "MSSV": "20238743",
+    "title": "K68 CTTT Kỹ thuật ô tô ĐH Bách Khoa Hà Nội",
+    "email": "anh.pv238743@gmail.com",
+    "thumbnail": "src/assets/img/member/PhamVietAnh.webp"
+  },
+  {
+    "name": "Phạm Quốc Anh",
+    "role1": "Ủy viên BQL",
+    "role2": "Trưởng mảng Thí nghiệm",
+    "MSSV": "20210081",
+    "title": "K66 Kỹ thuật ô tô ĐH Bách Khoa Hà Nội",
+    "email": "anh.pq210081@sis.hust.edu.vn",
+    "thumbnail": "src/assets/img/member/PhamQuocAnh.webp"
+  },
+  {
+    "name": "Chu Tiến Đạt",
+    "role1": "Ủy viên BQL",
+    "role2": "Trưởng mảng Tiếng Anh",
+    "MSSV": "20227827",
+    "title": "K67 CTTT Kỹ thuật ô tô ĐH Bách Khoa Hà Nội",
+    "email": "dat.ct227827@sis.hust.edu.vn",
+    "thumbnail": "src/assets/img/member/ChuTienDat.webp"
+  }
+]
