@@ -868,7 +868,7 @@ const handleSubmit = async () => {
 
 /* Questions/Comments Section */
 .questions-note {
-  margin-top: 8px;
+  margin-top: 30px;
   padding: 8px 12px;
   background: lighten($color-primary, 45%);
   border-radius: 6px;
