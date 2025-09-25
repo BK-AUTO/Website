@@ -101,18 +101,7 @@ const menus = computed(() => {
       key: 'member-recruitment',
       label: t('menu.memberRecruitment'),
       title: t('menu.memberRecruitment'),
-      to: '/member-recruitment',
-      style: {
-        background: '#3ac569',
-        color: 'white',
-        fontWeight: '600',
-        borderRadius: '0',
-        border: 'none',
-        padding: '8px 16px',
-        transition: 'all 0.3s ease',
-        position: 'relative',
-        overflow: 'hidden'
-      }
+      to: '/tuyenthanhvienf16',
     },
   ];
 });
@@ -156,27 +145,6 @@ const menus = computed(() => {
         }
       }
     }
-  }
-}
-
-:deep(.ant-menu-item[data-menu-id*="member-recruitment"]) {
-  color: white !important;
-  
-  &:hover {
-    background: #2d9d4a !important;
-    color: white !important;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(58, 197, 105, 0.4) !important;
-  }
-  
-  &:active {
-    transform: translateY(0);
-    color: white !important;
-    box-shadow: 0 2px 6px rgba(58, 197, 105, 0.6) !important;
-  }
-  
-  .ant-menu-title-content {
-    color: white !important;
   }
 }
 </style>

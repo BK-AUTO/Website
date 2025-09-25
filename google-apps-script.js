@@ -301,7 +301,7 @@ function formatSubDepartments(subDepartmentsJson) {
     const names = {
       'communication': 'Truyền thông',
       'english': 'Tiếng Anh',
-      'manufacturing': 'Gia công - Cơ khí'
+      'manufacturing': 'Cơ khí'
     };
     return subDepts.map(code => names[code] || code).join(', ') || 'Không có';
   } catch (error) {

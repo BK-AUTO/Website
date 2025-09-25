@@ -140,8 +140,12 @@
   },
 
   "recruitment": {
-    "title": "F16 BK-AUTO CLUB MEMBER RECRUITMENT",
-    "subtitle": "Join our automotive technology research and development team",
+    "title": "Member Recruitment",
+    "subtitle": "",
+    "cta": {
+      "subtitle": "Join us today",
+      "badge": "Now Hiring"
+    },
     "timeline": {
       "title": "Event Timeline:",
       "round1": "Round 1: Registration",
@@ -162,7 +166,7 @@
       "note3": "If you have scheduling conflicts on interview day, please message BK-AUTO Fanpage or email support{'@'}bkauto.vn immediately"
     },
     "contact": {
-      "title": "BK-AUTO CLUB",
+      "title": "Contact us",
       "email": "Email",
       "phone": "Contact",
       "fanpage": "Fanpage"
@@ -198,7 +202,16 @@
       "cvUploadNote": "You can upload your CV to Google Drive, OneDrive or other platforms and paste the link here",
       "submit": "Submit Application",
       "submitSuccess": "Application submitted successfully!",
-      "submitError": "An error occurred while submitting. Please try again later."
+      "submitError": "An error occurred while submitting. Please try again later.",
+      "validationError": "Please check and fill in all required information"
+    },
+    "draft": {
+      "autoSaved": "Form data is automatically saved",
+      "loaded": "Saved draft has been restored",
+      "saveNow": "Save draft now",
+      "clear": "Clear draft",
+      "cleared": "Draft cleared successfully",
+      "confirmClear": "Are you sure you want to clear all entered information? This action cannot be undone."
     },
     "departments": {
       "ai": "AI for Automobile",

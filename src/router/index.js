@@ -171,7 +171,7 @@ const router = createRouter({
           props: true,
         },
         {
-          path: '/member-recruitment',
+          path: '/tuyenthanhvienf16',
           name: 'member-recruitment',
           component: () => import('../views/recruitment/MemberRecruitment.vue'),
           meta: {

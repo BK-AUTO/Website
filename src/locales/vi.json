@@ -140,8 +140,12 @@
   },
 
   "recruitment": {
-    "title": "TUYỂN THÀNH VIÊN CLB BK-AUTO F16",
-    "subtitle": "Gia nhập đội ngũ nghiên cứu và phát triển công nghệ ô tô",
+    "title": "Tuyển thành viên",
+    "subtitle": "",
+    "cta": {
+      "subtitle": "Tham gia ngay hôm nay",
+      "badge": "Đang tuyển"
+    },
     "timeline": {
       "title": "Timeline chi tiết sự kiện:",
       "round1": "Vòng 1: Đăng ký",
@@ -185,7 +189,7 @@
       "majorPlaceholder": "Ví dụ: Kỹ thuật ô tô",
       "email": "Email",
       "hustEmailPlaceholder": "email{'@'}sis.hust.edu.vn",
-      "personalEmailPlaceholder": "example@gmail.com",
+      "personalEmailPlaceholder": "example{'@'}gmail.com",
       "phone": "Số điện thoại",
       "phonePlaceholder": "Ví dụ: 0987654321",
       "departmentSelection": "Lựa chọn mảng bạn muốn ứng tuyển",
@@ -198,7 +202,16 @@
       "cvUploadNote": "Bạn có thể upload CV lên Google Drive, OneDrive hoặc các nền tảng khác rồi paste link (lưu ý: link dẫn trực tiếp đến file CV chứ không phải dẫn đến folder chứa CV) vào đây. CHÚ Ý nhớ mở quyền truy cập 'người xem' trước khi gửi đơn. CLB sẽ không chịu trách nhiệm nếu bạn không mở quyền truy cập hoặc gửi file không phải định dạng PDF hoặc nội dung không phải file CV của bạn.",
       "submit": "Gửi đơn đăng ký",
       "submitSuccess": "Đơn đăng ký đã được gửi thành công!",
-      "submitError": "Có lỗi xảy ra khi gửi đơn. Vui lòng thử lại sau."
+      "submitError": "Có lỗi xảy ra khi gửi đơn. Vui lòng thử lại sau.",
+      "validationError": "Vui lòng kiểm tra và điền đầy đủ thông tin bắt buộc"
+    },
+    "draft": {
+      "autoSaved": "Thông tin form được lưu tự động",
+      "loaded": "Đã khôi phục nháp đã lưu",
+      "saveNow": "Lưu nháp ngay",
+      "clear": "Xóa nháp",
+      "cleared": "Đã xóa nháp thành công",
+      "confirmClear": "Bạn có chắc chắn muốn xóa tất cả thông tin đã nhập? Hành động này không thể hoàn tác."
     },
     "departments": {
       "ai": "AI for Automobile",
@@ -207,7 +220,7 @@
       "experiment": "Thí nghiệm",
       "communication": "Truyền thông",
       "english": "Tiếng Anh",
-      "manufacturing": "Gia công - Cơ khí"
+      "manufacturing": "Cơ khí"
     },
     "validation": {
       "studentTypeRequired": "Vui lòng chọn loại sinh viên",

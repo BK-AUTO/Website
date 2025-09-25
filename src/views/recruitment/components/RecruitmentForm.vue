@@ -236,19 +236,52 @@
         </a-form-item>
       </div>
 
+      <!-- Draft Actions -->
+      <div class="draft-actions" v-if="savedDraft">
+        <div class="draft-info">
+          <i class="fas fa-info-circle"></i>
+          <span>{{ t('recruitment.draft.autoSaved') }}</span>
+        </div>
+        <a-button 
+          type="text" 
+          danger
+          @click="confirmClearDraft"
+          class="clear-draft-btn"
+        >
+          <i class="fas fa-trash-alt"></i>
+          {{ t('recruitment.draft.clear') }}
+        </a-button>
+      </div>
+
       <!-- Submit Button -->
       <a-form-item class="submit-section">
-        <a-button
-          type="primary"
-          html-type="submit"
-          size="large"
-          :loading="loading"
-          block
-          class="submit-button"
-        >
-          <i class="fas fa-paper-plane"></i>
-          {{ t('recruitment.form.submit') }}
-        </a-button>
+        <a-space direction="vertical" size="middle" style="width: 100%">
+          <a-button
+            type="primary"
+            html-type="submit"
+            size="large"
+            :loading="loading"
+            block
+            class="submit-button"
+          >
+            <i class="fas fa-paper-plane"></i>
+            {{ t('recruitment.form.submit') }}
+          </a-button>
+          
+          <div class="draft-manual-actions">
+            <a-space>
+              <a-button
+                type="default"
+                size="small"
+                @click="saveDraft"
+                class="save-draft-btn"
+              >
+                <i class="fas fa-save"></i>
+                {{ t('recruitment.draft.saveNow') }}
+              </a-button>
+            </a-space>
+          </div>
+        </a-space>
       </a-form-item>
 
     </a-form>
@@ -256,8 +289,10 @@
 </template>
 
 <script setup>
-import { ref, reactive, computed } from 'vue';
+import { ref, computed, reactive, watch, nextTick, onMounted } from 'vue';
+import { message } from 'ant-design-vue';
 import { useI18n } from 'vue-i18n';
+import { useStorage } from '@vueuse/core';
 
 const { t } = useI18n();
 const emit = defineEmits(['submit']);
@@ -271,6 +306,24 @@ const props = defineProps({
 
 const formRef = ref();
 
+// Define draft storage key
+const DRAFT_STORAGE_KEY = 'recruitment-form-draft';
+
+// Create reactive storage for form draft
+const savedDraft = useStorage(DRAFT_STORAGE_KEY, null, localStorage, {
+  mergeDefaults: false,
+  serializer: {
+    read: (value) => {
+      try {
+        return value ? JSON.parse(value) : null;
+      } catch {
+        return null;
+      }
+    },
+    write: (value) => JSON.stringify(value)
+  }
+});
+
 const formData = reactive({
   studentType: 'hust',
   fullName: '',
@@ -282,6 +335,88 @@ const formData = reactive({
   subDepartments: [],
   cvLink: ''
 });
+
+// Load saved draft when component mounts
+onMounted(() => {
+  loadDraft();
+});
+
+// Auto-save draft when form data changes (debounced)
+let saveTimeout = null;
+watch(formData, () => {
+  // Clear existing timeout
+  if (saveTimeout) {
+    clearTimeout(saveTimeout);
+  }
+  
+  // Set new timeout to save after 1 second of inactivity
+  saveTimeout = setTimeout(() => {
+    saveDraft();
+  }, 1000);
+}, { deep: true });
+
+const loadDraft = () => {
+  if (savedDraft.value) {
+    try {
+      Object.assign(formData, savedDraft.value);
+      nextTick(() => {
+        message.info(t('recruitment.draft.loaded'));
+      });
+    } catch (error) {
+      console.error('Error loading draft:', error);
+      clearDraft();
+    }
+  }
+};
+
+const saveDraft = () => {
+  // Only save if form has some data
+  const hasData = Object.values(formData).some(value => {
+    if (Array.isArray(value)) {
+      return value.length > 0;
+    }
+    return value && value.toString().trim() !== '';
+  });
+  
+  if (hasData) {
+    savedDraft.value = { ...formData };
+  }
+};
+
+const clearDraft = () => {
+  savedDraft.value = null;
+  if (saveTimeout) {
+    clearTimeout(saveTimeout);
+    saveTimeout = null;
+  }
+};
+
+const confirmClearDraft = () => {
+  // Show confirmation before clearing
+  const confirmed = window.confirm(t('recruitment.draft.confirmClear'));
+  if (confirmed) {
+    // Reset form data
+    Object.assign(formData, {
+      studentType: 'hust',
+      fullName: '',
+      identifier: '',
+      majorClass: '',
+      email: '',
+      phone: '',
+      mainDepartment: '',
+      subDepartments: [],
+      cvLink: ''
+    });
+    
+    clearDraft();
+    message.success(t('recruitment.draft.cleared'));
+    
+    // Clear form validation
+    if (formRef.value) {
+      formRef.value.resetFields();
+    }
+  }
+};
 
 const rules = computed(() => {
   const isHustStudent = formData.studentType === 'hust';
@@ -378,6 +513,17 @@ const handleSubmit = async () => {
       mainDepartment: formData.mainDepartment,
       subDepartments: formData.subDepartments,
       cvLink: formData.cvLink
+    };
+
+    // Clear draft after successful submission
+    clearDraft();
+    
+    emit('submit', submitData);
+  } catch (error) {
+    console.error('Validation failed:', error);
+    message.error(t('recruitment.form.validationError'));
+  }
+};
     };
     
     emit('submit', submitData);
@@ -555,33 +701,52 @@ const handleSubmit = async () => {
   background: white;
   cursor: pointer;
   
-  &:hover {
-    border-color: $color-primary;
-    background: $color-gray-3;
-  }
-  
   i {
     font-size: 24px;
     color: $color-gray-7;
     margin-bottom: 10px;
     display: block;
+    transition: color 0.3s ease;
   }
   
   span {
     font-size: 14px;
     font-weight: $fw-semibold;
     color: #181c32;
+    transition: color 0.3s ease;
   }
 }
 
+// Hover state for unchecked checkboxes
+.sub-department-checkbox:not(.ant-checkbox-wrapper-checked) .sub-department-card:hover {
+  border-color: $color-gray-6;
+  background: $color-gray-2;
+  
+  i {
+    color: $color-gray-8;
+  }
+}
+
+// Checked state styling
 :deep(.ant-checkbox-wrapper.sub-department-checkbox.ant-checkbox-wrapper-checked .sub-department-card) {
   border-color: $color-primary;
-  background: $color-gray-3;
-  box-shadow: $shadow-2;
+  background: lighten($color-primary, 45%);
+  box-shadow: 0 2px 8px rgba($color-primary, 0.15);
   
   i {
     color: $color-primary;
   }
+  
+  span {
+    color: $color-primary;
+  }
+}
+
+// Hover state for checked checkboxes
+:deep(.ant-checkbox-wrapper.sub-department-checkbox.ant-checkbox-wrapper-checked .sub-department-card:hover) {
+  border-color: darken($color-primary, 10%);
+  background: lighten($color-primary, 40%);
+  box-shadow: 0 4px 12px rgba($color-primary, 0.2);
 }
 
 .sub-department-note {
@@ -641,6 +806,66 @@ const handleSubmit = async () => {
   
   i {
     margin-right: 8px;
+  }
+}
+
+/* Draft Actions */
+.draft-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  background: lighten($color-warning, 35%);
+  border: 1px solid lighten($color-warning, 20%);
+  border-radius: 6px;
+  margin-bottom: 24px;
+  
+  .draft-info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: darken($color-warning, 20%);
+    font-size: 13px;
+    
+    i {
+      color: $color-warning;
+    }
+  }
+}
+
+.clear-draft-btn {
+  font-size: 12px;
+  height: auto;
+  padding: 4px 8px;
+  
+  i {
+    margin-right: 4px;
+    font-size: 11px;
+  }
+  
+  &:hover {
+    background: rgba($color-danger, 0.1);
+  }
+}
+
+.draft-manual-actions {
+  text-align: center;
+}
+
+.save-draft-btn {
+  font-size: 13px;
+  height: 32px;
+  border-color: $color-gray-5;
+  color: $color-gray-7;
+  
+  i {
+    margin-right: 6px;
+    font-size: 12px;
+  }
+  
+  &:hover {
+    border-color: $color-primary;
+    color: $color-primary;
   }
 }
 

@@ -22,14 +22,11 @@
                 <ArrowRightOutlined />
               </a-button>
               <a-button 
-                size="large"
+                type="primary"
                 @click="redirectToRecruitment"
                 class="recruitment-button"
               >
-                <span>
-                  <span>{{ t('menu.memberRecruitment') }}</span>
-                </span>
-                <UserAddOutlined />
+                <span>{{ t('menu.memberRecruitment') }}</span>
               </a-button>
             </div>
           </div>
@@ -65,7 +62,7 @@ import Introduction from './components/Introduction.vue';
 import { useTitle } from '@/composables/common.js';
 import { ref } from 'vue';
 import { useI18n } from 'vue-i18n';
-import { ArrowRightOutlined, UserAddOutlined } from '@ant-design/icons-vue';
+import { ArrowRightOutlined } from '@ant-design/icons-vue';
 import router from '@/router';
 
 useTitle('menu.dashboard');
@@ -77,7 +74,7 @@ const redirectToAboutPage = () => {
 };
 
 const redirectToRecruitment = () => {
-  router.push('/member-recruitment');
+  router.push('/tuyenthanhvienf16');
 };
 </script>
 
@@ -110,63 +107,26 @@ const redirectToRecruitment = () => {
     gap: 16px;
     flex-wrap: wrap;
     
+    .ant-btn {
+      height: $btn-height-base;
+      font-size: $btn-font-size-base;
+      font-weight: $fw-semibold;
+      border-radius: 0;
+      padding: $btn-padding-base;
+      
+      &:hover, &:focus {
+        background: darken($color-primary, 8%) !important;
+        border-color: darken($color-primary, 8%) !important;
+      }
+    }
+    
     .recruitment-button {
-      background: #3ac569 !important;
-      border: none !important;
-      border-radius: 0 !important;
-      font-weight: 600;
-      font-size: 16px;
-      height: 50px;
-      padding: 0 24px;
-      transition: all 0.3s ease;
-      position: relative;
-      overflow: hidden;
-      
-      &:hover {
-        background: #2d9d4a !important;
-        transform: translateY(-3px);
-        box-shadow: 0 6px 20px rgba(58, 197, 105, 0.4);
-      }
-      
-      &:active {
-        transform: translateY(-1px);
-        box-shadow: 0 3px 10px rgba(58, 197, 105, 0.6);
-      }
-      
-      &::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-        transition: left 0.5s ease;
-      }
-      
-      &:hover::before {
-        left: 100%;
-      }
+      background: $color-primary !important;
+      border: 1px solid $color-primary !important;
       
       span {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        position: relative;
-        z-index: 1;
+        color: white !important;
       }
-    }
-  }
-
-  @keyframes pulse {
-    0% {
-      box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
-    }
-    50% {
-      box-shadow: 0 4px 25px rgba(255, 107, 107, 0.6);
-    }
-    100% {
-      box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
     }
   }
 }

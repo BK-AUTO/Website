@@ -2,49 +2,18 @@
   <div class="member-recruitment">
     <Loading :is-loading="isLoading" />
     
-    <!-- Header Navigation -->
-    <HeaderV2></HeaderV2>
-    
-    <!-- Page Header Section -->
-    <div class="page-header-section">
-      <div class="header-content">
-        <div class="container">
-          <div class="row justify-content-center">
-            <div class="col-12">
-              <!-- Breadcrumb -->
-              <div class="breadcrumb-container">
-                <a-breadcrumb separator="">
-                  <a-breadcrumb-item
-                    v-for="(subLink, index) in [t('menu.dashboard')]"
-                    v-bind:key="index"
-                    href="/"
-                    class="sub-link"
-                  >
-                    <span>{{ subLink }}</span>
-                    <span class="breadcrumb-separator">/</span>
-                  </a-breadcrumb-item>
-
-                  <a-breadcrumb-item class="main-link">
-                    <span>{{ t('menu.memberRecruitment') }}</span>
-                  </a-breadcrumb-item>
-                </a-breadcrumb>
-              </div>
-
-              <!-- Page Title -->
-              <div class="page-title">
-                <span>{{ t('recruitment.title') }}</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <!-- Use standard PageHeader like other pages -->
+    <PageHeader
+      :subLinks="[t('menu.dashboard')]"
+      :mainLink="t('menu.memberRecruitment')"
+      :title="t('recruitment.title')"
+    />
 
     <!-- Main Content -->
     <div class="page-content">
-      <div class="container">
+      <div class="container-fluid">
         <div class="row justify-content-center">
-          <div class="col-12 col-lg-10">
+          <div class="col-12 col-lg-10 col-xl-8">
             
             <!-- Information Card -->
             <div class="info-card">
@@ -178,7 +147,6 @@ import { useRouter } from 'vue-router';
 import { useI18n } from 'vue-i18n';
 import { message } from 'ant-design-vue';
 import PageHeader from '@/components/PageHeader.vue';
-import HeaderV2 from '@/layout/AppHeaderV2.vue';
 import Loading from '@/components/Loading.vue';
 import RecruitmentForm from './components/RecruitmentForm.vue';
 import { useTitle } from '@/composables/common.js';
@@ -211,7 +179,7 @@ const handleFormSubmit = async (formData) => {
       cvLink: formData.cvLink,
     });
 
-    const response = await fetch(`https://script.google.com/macros/s/AKfycbx26pfq55Zau1tsBu3EIQIgoZEegUe9gKa66i256FLP7E3_cop_7u_ZeMGfNyQe3QY_Xw/exec?${params.toString()}`);
+    const response = await fetch(`https://script.google.com/macros/s/AKfycbyswwclSVvyODTE1yTBtiJeQe660k--rGNs8-Eucom4s3kUGTtLkz7RKTykTozkpQWwdQ/exec?${params.toString()}`);
     
     const result = await response.text();
     
@@ -241,100 +209,80 @@ const closeSuccessModal = () => {
   min-height: 100vh;
 }
 
-.page-header-section {
-  height: 480px;
-  background: url('@/assets/img/background/clb.jpg') center/cover;
-  position: relative;
-  
-  .header-content {
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    height: 100%;
-    padding: 0 20px 40px;
-    
-    .breadcrumb-container {
-      margin-bottom: 20px;
-      text-align: center;
-      
-      .ant-breadcrumb {
-        display: flex;
-        justify-content: center;
-        
-        .sub-link {
-          color: rgba(255, 255, 255, 0.8);
-          text-decoration: none;
-          
-          &:hover {
-            color: white;
-          }
-        }
-        
-        .main-link {
-          color: white;
-          font-weight: 500;
-        }
-        
-        .breadcrumb-separator {
-          margin: 0 8px;
-          color: rgba(255, 255, 255, 0.6);
-        }
-      }
-    }
-    
-    .page-title {
-      text-align: center;
-      
-      span {
-        font-size: 2.5rem;
-        font-weight: bold;
-        color: white;
-        text-shadow: 0 2px 4px rgba(255, 254, 254, 0.3);
-        line-height: 1.2;
-        display: block;
-      }
-    }
-  }
-}
-
 .page-header {
   background: linear-gradient(0deg, rgba(0, 0, 0, 0.64), rgba(0, 0, 0, 0.64)),
-              url('@/assets/img/background/bg-default.webp') center/cover;
+              url('@/assets/img/background/clb.jpg') center/cover;
 }
 
 .page-content {
-  padding: 60px 0;
+  padding: 40px 0;
   background: $color-gray-2;
   min-height: calc(100vh - 480px);
 }
 
 .info-card {
   background: white;
-  border-radius: 8px;
-  box-shadow: $shadow-1;
-  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  padding: 48px;
   margin-bottom: 40px;
+  
+  @media (max-width: $md) {
+    padding: 36px;
+    margin-bottom: 32px;
+  }
+  
+  @media (max-width: $sm) {
+    padding: 28px;
+    margin-bottom: 24px;
+  }
 }
 
 .form-card {
   background: white;
-  border-radius: 8px;
-  box-shadow: $shadow-1;
-  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  padding: 48px;
+  
+  @media (max-width: $md) {
+    padding: 36px;
+  }
+  
+  @media (max-width: $sm) {
+    padding: 28px;
+  }
 }
 
 .form-title {
   font-family: $vietnam-font-2;
-  font-size: 24px;
+  font-size: 28px;
   color: #181c32;
-  margin-bottom: 30px;
+  margin-bottom: 32px;
   display: flex;
   align-items: center;
   gap: 12px;
   
+  @media (max-width: $md) {
+    font-size: 24px;
+    margin-bottom: 24px;
+  }
+  
+  @media (max-width: $sm) {
+    font-size: 20px;
+    gap: 8px;
+  }
+  
   i {
     color: $color-primary;
-    font-size: 28px;
+    font-size: 32px;
+    
+    @media (max-width: $md) {
+      font-size: 28px;
+    }
+    
+    @media (max-width: $sm) {
+      font-size: 24px;
+    }
   }
 }
 
@@ -344,48 +292,85 @@ const closeSuccessModal = () => {
   &:last-child {
     margin-bottom: 0;
   }
+  
+  @media (max-width: $sm) {
+    margin-bottom: 32px;
+  }
 }
 
 .section-title {
   font-family: $vietnam-font-2;
-  font-size: 20px;
+  font-size: 26px;
   color: #181c32;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
+  
+  @media (max-width: $md) {
+    font-size: 22px;
+    margin-bottom: 20px;
+    gap: 10px;
+  }
+  
+  @media (max-width: $sm) {
+    font-size: 20px;
+    gap: 8px;
+  }
   
   i {
     color: $color-primary;
-    font-size: 22px;
+    font-size: 28px;
+    
+    @media (max-width: $md) {
+      font-size: 24px;
+    }
+    
+    @media (max-width: $sm) {
+      font-size: 22px;
+    }
   }
 }
 
 .timeline-items {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 28px;
+  
+  @media (max-width: $sm) {
+    gap: 24px;
+  }
 }
 
 .timeline-item {
   display: flex;
   align-items: flex-start;
-  gap: 15px;
+  gap: 16px;
+  
+  @media (max-width: $sm) {
+    gap: 12px;
+  }
 }
 
 .timeline-badge {
   background: $color-primary;
   color: white;
-  width: 32px;
-  height: 32px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: $fw-bold;
-  font-size: 14px;
+  font-size: 16px;
   flex-shrink: 0;
   margin-top: 2px;
+  
+  @media (max-width: $sm) {
+    width: 32px;
+    height: 32px;
+    font-size: 14px;
+  }
 }
 
 .timeline-content {
@@ -437,11 +422,11 @@ const closeSuccessModal = () => {
 .note-item {
   display: flex;
   align-items: flex-start;
-  gap: 12px;
-  margin-bottom: 15px;
-  padding: 15px;
+  gap: 16px;
+  margin-bottom: 20px;
+  padding: 20px;
   background: $color-gray-3;
-  border-radius: 6px;
+  border-radius: 8px;
   
   &:last-child {
     margin-bottom: 0;
@@ -450,35 +435,39 @@ const closeSuccessModal = () => {
   i {
     color: $color-warning;
     margin-top: 2px;
-    font-size: 16px;
+    font-size: 18px;
   }
   
   span {
     color: $color-gray-8;
-    line-height: 1.5;
+    line-height: 1.6;
+    font-size: 15px;
   }
 }
 
 .contact-items {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 20px;
 }
 
 .contact-item {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 16px;
+  padding: 12px 0;
   
   i {
     color: $color-primary;
-    font-size: 16px;
-    width: 20px;
+    font-size: 18px;
+    width: 24px;
     text-align: center;
   }
   
   span {
     color: $color-gray-7;
+    font-size: 15px;
+    line-height: 1.5;
     
     a {
       color: $color-primary;
@@ -514,57 +503,73 @@ const closeSuccessModal = () => {
   line-height: 1.5;
 }
 
+@media (max-width: $lg) {
+  .page-content {
+    padding: 32px 0;
+  }
+}
+
 @media (max-width: $md) {
-  .page-header-section {
-    height: 350px;
+  .page-content {
+    padding: 24px 0;
+  }
+  
+  .timeline-content {
+    strong {
+      font-size: 15px;
+    }
     
-    .header-content {
-      padding: 0 15px 30px;
-      
-      .page-title span {
-        font-size: 1.8rem;
-      }
+    p {
+      font-size: 13px;
+    }
+  }
+}
+
+@media (max-width: $sm) {
+  .page-content {
+    padding: 20px 0;
+  }
+  
+  .note-item {
+    padding: 12px;
+    gap: 10px;
+    
+    i {
+      font-size: 14px;
+    }
+    
+    span {
+      font-size: 14px;
     }
   }
   
-  .page-content {
-    padding: 30px 0;
+  .contact-item {
+    gap: 10px;
+    
+    i {
+      font-size: 14px;
+    }
+    
+    span {
+      font-size: 14px;
+    }
   }
-  
-  .info-card,
-  .form-card {
-    padding: 24px;
-    margin-bottom: 24px;
+}
+
+@media (max-width: $xs) {
+  .container-fluid {
+    padding-left: 12px;
+    padding-right: 12px;
   }
   
   .timeline-item {
     flex-direction: column;
     align-items: flex-start;
-    gap: 10px;
+    gap: 8px;
   }
   
   .timeline-badge {
     align-self: flex-start;
-  }
-}
-
-@media (max-width: $sm) {
-  .page-header-section {
-    height: 300px;
-    
-    .header-content {
-      padding: 0 15px 20px;
-      
-      .page-title span {
-        font-size: 1.5rem;
-      }
-    }
-  }
-  
-  .info-card,
-  .form-card {
-    padding: 20px;
-    margin-bottom: 20px;
   }
 }
 </style>

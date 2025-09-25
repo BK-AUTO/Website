@@ -69,7 +69,7 @@ Form đăng ký tuyển thành viên đã được tích hợp hoàn chỉnh và
 ### Menu đã được thêm:
 - Header navigation: "Tuyển thành viên" (styled đặc biệt)
 - Dashboard CTA button với animation
-- Direct URL: `/member-recruitment`
+- Direct URL: `/tuyenthanhvienf16`
 
 ## 📱 RESPONSIVE DESIGN
 Form đã được optimize cho:
