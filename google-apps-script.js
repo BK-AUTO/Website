@@ -4,6 +4,13 @@
 const TZ = 'Asia/Ho_Chi_Minh';
 const SHEET_ID = '18vMVlHdUa99i76GHNY-f-Y38tzr9ZK-RvGA9cMwPbbU';
 
+// === CẤU HÌNH TÔ MÀU THEO TRẠNG THÁI ===
+const HEADER_ROW = 1;          // Dòng tiêu đề
+const STATUS_COL = 12;         // Cột L = 12
+const COLOR_APPROVED = '#d9ead3'; // Duyệt
+const COLOR_REJECTED = '#f4c7c3'; // Loại
+// Không màu cho "Đã nộp đơn" => dùng null để trả về mặc định
+
 function doGet(e) {
   try {
     const params = e.parameter;
@@ -29,9 +36,6 @@ function doGet(e) {
     // Lưu vào Google Sheets
     const result = saveToSheet(data);
     if (!result.success) throw new Error(result.error);
-
-    // Gửi email xác nhận (HTML-only, API key từ Script Properties)
-    sendConfirmationEmail(data.email, data.fullName);
 
     return ContentService
       .createTextOutput(JSON.stringify({ success: true, message: 'Application submitted successfully' }))
@@ -60,18 +64,16 @@ function normalizeToHCMDate(rawTs) {
       d = isNaN(parsed.getTime()) ? new Date() : parsed;
     }
   }
-  // Spreadsheet sẽ hiển thị theo timezone của file; mình set TZ tại saveToSheet().
+  // Spreadsheet hiển thị theo timezone của file; mình set TZ tại saveToSheet().
   return d;
 }
 
 /** Chuẩn hóa số điện thoại: giữ số, dấu +, bỏ khoảng trắng/ ký tự thừa, không đổi đầu số. */
 function normalizePhone(phoneRaw) {
   const s = (phoneRaw == null) ? '' : String(phoneRaw);
-  // Cho phép + ở đầu, còn lại là 0-9
   const trimmed = s.trim();
   if (trimmed === '') return '';
   const kept = trimmed.replace(/[^\d+]/g, '');
-  // Nếu có nhiều dấu +, giữ dấu + đầu, bỏ dấu + sau
   return kept.replace(/(?!^)\+/g, '');
 }
 
@@ -96,6 +98,7 @@ function saveToSheet(data) {
     // Chuẩn bị dữ liệu
     const phoneForSheet = data.phone ? ("'" + data.phone) : ""; // ép text, giữ 0 đầu
     const questionsForSheet = data.questions ? data.questions.substring(0, 1000) : ""; // giới hạn 1000 ký tự
+    const statusText = 'Đã nộp đơn'; // trạng thái mặc định khi ghi mới
     const rowData = [
       data.timestampDate, // Date native
       data.fullName,
@@ -108,7 +111,7 @@ function saveToSheet(data) {
       formatSubDepartments(data.subDepartments),
       data.cvLink,
       questionsForSheet,
-      'Đã nộp đơn'
+      statusText
     ];
 
     // Ghi theo kiểu setValues (không dùng appendRow)
@@ -130,12 +133,14 @@ function saveToSheet(data) {
     // Thiết lập dropdown validation cho row mới tạo (cột L)
     setupStatusDropdownForRow_(sheet, nextRow);
 
+    // === TÔ MÀU CHO DÒNG MỚI VỪA GHI (theo trạng thái mặc định) ===
+    applyRowColor_(sheet, nextRow, statusText);
+
     return { success: true };
   } catch (error) {
     return { success: false, error: error.toString() };
   }
 }
-
 
 /** Thiết lập định dạng cột để không bị sai kiểu (đặc biệt là SĐT, MSSV, Email, v.v.) */
 function ensureSheetFormats_(sheet) {
@@ -166,8 +171,6 @@ function ensureSheetFormats_(sheet) {
 
     // L: Trạng thái -> Dropdown validation
     setupStatusDropdown_(sheet);
-
-    // (Các cột khác để mặc định text theo nội dung)
   } catch (e) {
     Logger.log('ensureSheetFormats_ error: ' + e);
   }
@@ -183,8 +186,7 @@ function setupStatusDropdownForRow_(sheet, rowNumber) {
       .setHelpText('Chọn trạng thái: Đã nộp đơn, Duyệt, hoặc Loại')
       .build();
     
-    // Áp dụng validation cho ô L của row được chỉ định
-    const cell = sheet.getRange(rowNumber, 12); // cột L = 12
+    const cell = sheet.getRange(rowNumber, STATUS_COL);
     cell.setDataValidation(rule);
   } catch (error) {
     Logger.log('setupStatusDropdownForRow_ error: ' + error.toString());
@@ -201,9 +203,8 @@ function setupStatusDropdown_(sheet) {
       .setHelpText('Chọn trạng thái: Đã nộp đơn, Duyệt, hoặc Loại')
       .build();
     
-    // Áp dụng validation cho toàn bộ cột L (bỏ qua header row 1)
-    const lastRow = Math.max(sheet.getLastRow(), 2); // ít nhất từ row 2
-    const range = sheet.getRange(2, 12, lastRow - 1, 1); // cột L = 12
+    const lastRow = Math.max(sheet.getLastRow(), 2);
+    const range = sheet.getRange(2, STATUS_COL, lastRow - 1, 1);
     range.setDataValidation(rule);
     
     Logger.log('Status dropdown setup completed for column L');
@@ -212,116 +213,58 @@ function setupStatusDropdown_(sheet) {
   }
 }
 
-function sendConfirmationEmail(email, fullName) {
+/** ====== TÔ MÀU THEO TRẠNG THÁI ====== */
+
+/** Trả về màu theo nội dung trạng thái */
+function getRowColorForStatus_(status) {
+  const s = String(status || '').trim();
+  if (s === 'Duyệt') return COLOR_APPROVED;
+  if (s === 'Loại') return COLOR_REJECTED;
+  // 'Đã nộp đơn' hoặc giá trị khác -> không màu (mặc định)
+  return null;
+}
+
+/** Tô màu cả hàng theo trạng thái tại cột L */
+function applyRowColor_(sheet, row, status) {
+  if (row <= HEADER_ROW) return;
+  const lastCol = sheet.getLastColumn(); // tô đến cột cuối của sheet
+  const color = getRowColorForStatus_(status);
+  const rangeToColor = sheet.getRange(row, 1, 1, lastCol);
+  rangeToColor.setBackground(color); // null = trả về mặc định
+}
+
+/** Trigger: khi đổi dropdown ở cột L sẽ tô/ bỏ tô cả hàng */
+function onEdit(e) {
   try {
-    const subject = 'Xác nhận đăng ký tuyển thành viên CLB BK-AUTO';
-    const logoUrl = 'https://bkauto.vn/assets/bkauto-logo-a7f95174.svg';
-    const fanpageUrl = 'https://www.facebook.com/BKAUTO.STE';
+    const sheet = e.range.getSheet();
+    if (sheet.getSheetId() == null) return; // phòng trường hợp e rỗng
+    const row = e.range.getRow();
+    const col = e.range.getColumn();
+    if (row <= HEADER_ROW) return;
+    if (col !== STATUS_COL) return; // chỉ xử lý khi sửa cột L
 
-    // HTML theo style mẫu (nội dung giữ nguyên)
-    const htmlBody = `
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <title>${subject}</title>
-  <style>
-    body { font-family: Arial, sans-serif; line-height: 1.6; margin:0; padding:0; background:#f3f3f3; }
-    .container { width: 90%; max-width: 720px; margin: 24px auto; background:#fff; padding: 20px; border: 1px solid #ccc; border-radius: 8px; }
-    .logo { text-align: center; margin-bottom: 20px; }
-    .logo img { max-width: 200px; height: auto; }
-    h2 { text-align: center; color: #333; margin: 8px 0 16px; }
-    p { margin-bottom: 10px; color:#222; }
-    .info { margin-top: 20px; padding: 12px; background-color: #f8f8f8; border: 1px solid #ddd; border-radius: 6px; }
-    .info strong { display: block; margin-bottom: 6px; }
-    .timeline { margin: 0; padding-left: 18px; }
-    .contact { margin-top: 20px; }
-    .contact h3 { margin: 0 0 8px 0; }
-    .contact ul { list-style: none; padding: 0; margin: 0; }
-    .contact li { margin-bottom: 6px; }
-    .contact a { color: #007bff; text-decoration: none; }
-    .footer { margin-top: 24px; font-size: 12px; color: #666; text-align:center; }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <div class="logo">
-      <img src="${logoUrl}" alt="BK-AUTO Logo">
-    </div>
-    <h2>CLB BK-AUTO - CLB NGHIÊN CỨU KHOA HỌC VÀ KĨ THUẬT</h2>
-
-    <p>Xin chào <strong>${escapeHtml(fullName)}</strong>,</p>
-
-    <p>Cảm ơn bạn đã đăng ký tham gia CLB BK-AUTO!</p>
-
-    <p>Chúng tôi đã nhận được đơn đăng ký của bạn và sẽ xem xét trong thời gian sớm nhất.</p>
-
-    <div class="info">
-      <strong>📅 Timeline tiếp theo:</strong>
-      <ul class="timeline">
-        <li>Phỏng vấn: <strong>05/10/2025</strong></li>
-        <li>Tuần thử thách: <strong>09/10/2025</strong></li>
-      </ul>
-    </div>
-
-    <p>📧 Thông tin chi tiết sẽ được gửi qua email này, vui lòng kiểm tra email thường xuyên.</p>
-
-    <div class="contact">
-      <h3>📞 Nếu có thắc mắc, liên hệ:</h3>
-      <ul>
-        <li><strong>Email:</strong> bkauto.ste@gmail.com</li>
-        <li><strong>Phone:</strong> 0332611486 (Chu Tiến Đạt - Chủ nhiệm)</li>
-        <li><strong>Fanpage:</strong> <a href="${fanpageUrl}">https://www.facebook.com/BKAUTO.STE</a></li>
-      </ul>
-    </div>
-
-    <p>Trân trọng,<br>CLB BK-AUTO</p>
-
-    <div class="footer">
-      Email này được gửi tự động từ hệ thống đăng ký CLB BK-AUTO.
-    </div>
-  </div>
-</body>
-</html>`;
-
-    sendEmailViaResendHtmlOnly(email, subject, htmlBody);
-  } catch (error) {
-    Logger.log('Error sending confirmation email: ' + error.toString());
+    // Lấy giá trị sau khi chỉnh sửa
+    const status = String(e.range.getValue()).trim();
+    applyRowColor_(sheet, row, status);
+  } catch (err) {
+    Logger.log('onEdit error: ' + err);
   }
 }
 
-// Gửi HTML-ONLY qua Resend, API key từ Script Properties
-function sendEmailViaResendHtmlOnly(to, subject, htmlBody) {
-  try {
-    const url = 'https://api.resend.com/emails';
-    const apiKey = getResendApiKey_();
-    if (!apiKey) {
-      throw new Error('Missing Script Property "RESEND_API_KEY". Vào Project Settings → Script properties để set.');
-    }
-
-    const payload = {
-      from: 'Tuyển thành viên CLB BK-AUTO <ttv@bkauto.vn>', // Phải là email/domain đã verify trong Resend
-      to: [to],
-      subject: subject,
-      html: htmlBody
-    };
-
-    const options = {
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${apiKey}`,
-        'Content-Type': 'application/json'
-      },
-      payload: JSON.stringify(payload),
-      muteHttpExceptions: true
-    };
-
-    const response = UrlFetchApp.fetch(url, options);
-    Logger.log('Email sent response: ' + response.getResponseCode() + ' ' + response.getContentText());
-  } catch (error) {
-    Logger.log('Error sending email via Resend: ' + error.toString());
+/** Hàm tiện ích: tô lại tất cả hàng đang có dựa theo cột L (chạy thủ công nếu cần) */
+function recolorAllRows_() {
+  const ss = SpreadsheetApp.openById(SHEET_ID);
+  const sheet = ss.getActiveSheet();
+  const lastRow = sheet.getLastRow();
+  if (lastRow <= HEADER_ROW) return;
+  const statuses = sheet.getRange(2, STATUS_COL, lastRow - 1, 1).getValues();
+  for (let i = 0; i < statuses.length; i++) {
+    const rowIndex = i + 2;
+    applyRowColor_(sheet, rowIndex, statuses[i][0]);
   }
 }
+
+/** Các hàm khác giữ nguyên */
 
 function getResendApiKey_() {
   return PropertiesService.getScriptProperties().getProperty('RESEND_API_KEY');

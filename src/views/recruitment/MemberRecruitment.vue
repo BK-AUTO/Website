@@ -180,7 +180,7 @@ const handleFormSubmit = async (formData) => {
       questions: formData.questions || ''
     });
 
-    const response = await fetch(`https://script.google.com/macros/s/AKfycbyxoauUdPbcCd5jOhSbKi5CWbF9rvLDBx7vHXmkdyJi6ixIEplBtKLj0WU1MCUWK4ea9g/exec?${params.toString()}`);
+    const response = await fetch(`https://script.google.com/macros/s/AKfycbwLvtXtl2YMdqeCwMS6hneDESbLhVlw2NYF4d5vQH8LHMB4bFTTHavs2shOpJkIoleOKg/exec?${params.toString()}`);
     
     const result = await response.text();
     
