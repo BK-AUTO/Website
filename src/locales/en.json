@@ -149,9 +149,9 @@
     "timeline": {
       "title": "Event Timeline:",
       "round1": "Round 1: Registration",
-      "round1_detail": "September 25, 2025 - October 3, 2025",
+      "round1_detail": "September 25, 2025 - 12:00 PM October 2, 2025",
       "round2": "Round 2: Interview",
-      "round2_detail": "October 5, 2025",
+      "round2_detail": "October 4, 2025",
       "round3": "Round 3: Department Challenge Week",
       "round3_detail": "Start from October 9, 2025"
     },
@@ -248,7 +248,7 @@
     "success": {
       "title": "Registration Successful!",
       "message": "Thank you for applying to join BK-AUTO Club",
-      "description": "We will contact you via email before October 5, 2025. Or you can follow the information on the Club's Fanpage!",
+      "description": "We will contact you via email before 12:00 PM October 3, 2025. Or you can follow the information on the Club's Fanpage!",
       "alreadySubmitted": "You have successfully submitted your application!",
       "candidateName": "Applicant: {name}",
       "submittedAt": "Submitted at",

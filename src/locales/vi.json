@@ -149,9 +149,9 @@
     "timeline": {
       "title": "Timeline chi tiết sự kiện:",
       "round1": "Vòng 1: Đăng ký",
-      "round1_detail": "25/9/2025 - 03/10/2025",
+      "round1_detail": "25/9/2025 - 12:00 PM (trưa) 02/10/2025",
       "round2": "Vòng 2: Phỏng vấn",
-      "round2_detail": "Ngày 05/10/2025",
+      "round2_detail": "Ngày 04/10/2025",
       "round3": "Vòng 3: Tuần thử thách của các mảng",
       "round3_detail": "Bắt đầu từ ngày 09/10/2025"
     },
@@ -248,7 +248,7 @@
     "success": {
       "title": "Đăng ký thành công!",
       "message": "Cảm ơn bạn đã đăng ký tham gia CLB BK-AUTO",
-      "description": "Chúng mình sẽ gửi kết quả vòng đơn trước ngày 05/10/2025 qua email. Hoặc bạn có thể theo dõi thông tin trên Fanpage của CLB nhé!",
+      "description": "Chúng mình sẽ gửi kết quả vòng đơn trước ngày 12:00 PM 03/10/2025 qua email. Hoặc bạn có thể theo dõi thông tin trên Fanpage của CLB nhé!",
       "alreadySubmitted": "Bạn đã gửi đơn đăng ký thành công!",
       "candidateName": "Ứng viên: {name}",
       "submittedAt": "Thời gian gửi",
