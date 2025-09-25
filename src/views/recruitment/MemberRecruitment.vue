@@ -160,27 +160,58 @@ const isLoading = ref(false);
 const isSubmitting = ref(false);
 const showSuccessModal = ref(false);
 
+// Helper function to convert file to base64
+const fileToBase64 = (file) => {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = error => reject(error);
+  });
+};
+
 const handleFormSubmit = async (formData) => {
   isSubmitting.value = true;
   isLoading.value = true;
 
   try {
-    // Submit to Google Apps Script
-    const params = new URLSearchParams({
+    // Convert file to base64 if exists
+    let cvFileData = '';
+    if (formData.cvFile && formData.cvFile.file) {
+      const base64Data = await fileToBase64(formData.cvFile.file);
+      cvFileData = base64Data;
+    }
+
+    // Prepare data object for JSON submission
+    const submitData = {
       timestamp: new Date().toLocaleString(),
       fullName: formData.fullName,
-      identifier: formData.identifier, // MSSV or School
-      majorClass: formData.majorClass, // Major/Class or Major
+      identifier: formData.identifier,
+      majorClass: formData.majorClass,
       email: formData.email,
       phone: formData.phone,
-      studentType: formData.studentType, // 'hust' or 'external'
+      studentType: formData.studentType,
       mainDepartment: formData.mainDepartment,
-      subDepartments: JSON.stringify(formData.subDepartments),
-      cvLink: formData.cvLink,
-      questions: formData.questions || ''
-    });
+      subDepartments: formData.subDepartments,
+      questions: formData.questions || '',
+      cvFile: cvFileData,
+      cvFileName: formData.cvFile ? formData.cvFile.name : '',
+      cvFileSize: formData.cvFile ? formData.cvFile.size : 0,
+      cvFileType: formData.cvFile ? formData.cvFile.type : ''
+    };
 
-    const response = await fetch(`https://script.google.com/macros/s/AKfycbwLvtXtl2YMdqeCwMS6hneDESbLhVlw2NYF4d5vQH8LHMB4bFTTHavs2shOpJkIoleOKg/exec?${params.toString()}`);
+    // Use POST with text/plain content-type to avoid CORS preflight
+    const response = await fetch(
+      'https://script.google.com/macros/s/AKfycbx8Mk60rFE9ZlM23SZfJ7Idcv5Ww8tYP6HYnvhZoBcqC1HZPRKhxWrPI0FYJdjQhLpwXg/exec',
+      {
+        redirect: "follow",
+        method: "POST",
+        body: JSON.stringify(submitData),
+        headers: {
+          "Content-Type": "text/plain;charset=utf-8",
+        },
+      }
+    );
     
     const result = await response.text();
     

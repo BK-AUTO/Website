@@ -197,9 +197,11 @@
       "subDepartments": "Skill Departments (multiple selection)",
       "subDepartmentNote": "Skill departments help you develop complementary skills for your main expertise",
       "cvUpload": "CV Upload",
+      "cvUploadLabel": "Drop your CV file here or <span class=\"filepond--label-action\">Browse files</span><br>Supported: PDF, DOC, DOCX (Max 5MB)",
       "cvLink": "CV/Portfolio Link",
       "cvLinkPlaceholder": "https://drive.google.com/... or other link",
       "cvUploadNote": "You can upload your CV to Google Drive, OneDrive or other platforms and paste the link here",
+      "cvFileUploadNote": "Upload CV file directly from your computer. File will be encoded and sent with registration information.",
       "questionsComments": "Questions & Comments",
       "questions": "Do you have any questions or comments for the Club?",
       "questionsPlaceholder": "e.g., I'd like to know more about club activities, study schedule,...",
@@ -243,6 +245,10 @@
       "mainDepartmentRequired": "Please select main department",
       "cvLinkRequired": "Please enter CV link",
       "cvLinkInvalid": "Invalid CV link format",
+      "cvFileRequired": "Please upload CV file",
+      "fileSizeError": "File too large. Maximum allowed size is {maxSize}",
+      "fileTypeError": "Unsupported file format. Please select PDF, DOC or DOCX file",
+      "fileError": "An error occurred while processing the file. Please try again",
       "alreadySubmitted": "You have already submitted an application. Each device is only allowed to submit one application."
     },
     "success": {

@@ -235,21 +235,20 @@
         </h4>
 
         <a-form-item
-          name="cvLink"
-          :label="t('recruitment.form.cvLink')"
+          name="cvFile"
+          :label="t('recruitment.form.cvUpload')"
         >
-          <a-input
-            v-model:value="formData.cvLink"
-            size="large"
-            :placeholder="t('recruitment.form.cvLinkPlaceholder')"
-          >
-            <template #prefix>
-              <i class="fas fa-link input-icon"></i>
-            </template>
-          </a-input>
+          <FileUpload
+            v-model="formData.cvFile"
+            :accepted-types="'application/pdf,.pdf,.doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document'"
+            :max-size="'5MB'"
+            @error="handleFileUploadError"
+            @file-added="handleFileAdded"
+            @file-removed="handleFileRemoved"
+          />
           <div class="cv-upload-note">
             <i class="fas fa-lightbulb"></i>
-            {{ t('recruitment.form.cvUploadNote') }}
+            {{ t('recruitment.form.cvFileUploadNote') }}
           </div>
         </a-form-item>
       </div>
@@ -338,6 +337,7 @@ import { ref, computed, reactive, watch, nextTick, onMounted } from 'vue';
 import { message } from 'ant-design-vue';
 import { useI18n } from 'vue-i18n';
 import { useStorage } from '@vueuse/core';
+import FileUpload from '@/components/FileUpload.vue';
 
 const { t } = useI18n();
 const emit = defineEmits(['submit']);
@@ -394,7 +394,7 @@ const formData = reactive({
   phone: '',
   mainDepartment: '',
   subDepartments: [],
-  cvLink: '',
+  cvFile: null, // For file upload
   questions: '' // Questions/comments for the club
 });
 
@@ -558,9 +558,8 @@ const rules = computed(() => {
     mainDepartment: [
       { required: true, message: t('recruitment.validation.mainDepartmentRequired') }
     ],
-    cvLink: [
-      { required: true, message: t('recruitment.validation.cvLinkRequired') },
-      { type: 'url', message: t('recruitment.validation.cvLinkInvalid') }
+    cvFile: [
+      { required: true, message: t('recruitment.validation.cvFileRequired') }
     ]
   };
 });
@@ -573,6 +572,22 @@ const handleStudentTypeChange = () => {
   
   // Clear validation errors
   formRef.value?.clearValidate(['identifier', 'majorClass', 'email']);
+};
+
+// Handle file upload events
+const handleFileUploadError = (error) => {
+  console.error('File upload error:', error);
+  // Error is already displayed by FileUpload component
+};
+
+const handleFileAdded = (fileData) => {
+  console.log('File added to form:', fileData.name);
+  message.success(`File "${fileData.name}" đã được tải lên thành công`);
+};
+
+const handleFileRemoved = (file) => {
+  console.log('File removed from form:', file.filename);
+  message.info('File đã được xóa');
 };
 
 const handleSubmit = async () => {
@@ -594,7 +609,7 @@ const handleSubmit = async () => {
       phone: formData.phone,
       mainDepartment: formData.mainDepartment,
       subDepartments: formData.subDepartments,
-      cvLink: formData.cvLink,
+      cvFile: formData.cvFile,
       questions: formData.questions
     };
 
