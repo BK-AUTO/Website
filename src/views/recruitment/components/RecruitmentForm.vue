@@ -1,5 +1,23 @@
 <template>
   <div class="recruitment-form">
+    <!-- Already Submitted Notice -->
+    <div v-if="submissionStatus" class="submission-complete">
+      <div class="success-icon">
+        <i class="fas fa-check-circle"></i>
+      </div>
+      <h3 class="success-title">{{ t('recruitment.success.alreadySubmitted') }}</h3>
+      <p class="success-message">
+        {{ t('recruitment.success.candidateName', { name: submissionStatus.candidateName }) }}
+      </p>
+      <p class="success-timestamp">
+        {{ t('recruitment.success.submittedAt') }}: {{ formatTimestamp(submissionStatus.timestamp) }}
+      </p>
+      <div class="success-actions">
+      </div>
+    </div>
+
+    <!-- Form Content (only show if not submitted) -->
+    <div v-else>
     <a-form
       ref="formRef"
       :model="formData"
@@ -236,6 +254,32 @@
         </a-form-item>
       </div>
 
+      <!-- Questions/Comments Section -->
+      <div class="form-section">
+        <h4 class="form-section-title">
+          <i class="fas fa-question-circle"></i>
+          {{ t('recruitment.form.questionsComments') }}
+        </h4>
+
+        <a-form-item
+          name="questions"
+          :label="t('recruitment.form.questions')"
+        >
+          <a-textarea
+            v-model:value="formData.questions"
+            size="large"
+            :placeholder="t('recruitment.form.questionsPlaceholder')"
+            :rows="4"
+            :maxlength="1000"
+            show-count
+          />
+          <div class="questions-note">
+            <i class="fas fa-info-circle"></i>
+            {{ t('recruitment.form.questionsNote') }}
+          </div>
+        </a-form-item>
+      </div>
+
       <!-- Draft Actions -->
       <div class="draft-actions" v-if="savedDraft">
         <div class="draft-info">
@@ -285,6 +329,7 @@
       </a-form-item>
 
     </a-form>
+    </div>
   </div>
 </template>
 
@@ -306,11 +351,27 @@ const props = defineProps({
 
 const formRef = ref();
 
-// Define draft storage key
+// Define storage keys
 const DRAFT_STORAGE_KEY = 'recruitment-form-draft';
+const SUBMISSION_STORAGE_KEY = 'recruitment-form-submitted';
 
 // Create reactive storage for form draft
 const savedDraft = useStorage(DRAFT_STORAGE_KEY, null, localStorage, {
+  mergeDefaults: false,
+  serializer: {
+    read: (value) => {
+      try {
+        return value ? JSON.parse(value) : null;
+      } catch {
+        return null;
+      }
+    },
+    write: (value) => JSON.stringify(value)
+  }
+});
+
+// Create reactive storage for submission status
+const submissionStatus = useStorage(SUBMISSION_STORAGE_KEY, null, localStorage, {
   mergeDefaults: false,
   serializer: {
     read: (value) => {
@@ -333,7 +394,8 @@ const formData = reactive({
   phone: '',
   mainDepartment: '',
   subDepartments: [],
-  cvLink: ''
+  cvLink: '',
+  questions: '' // Questions/comments for the club
 });
 
 // Load saved draft when component mounts
@@ -405,7 +467,8 @@ const confirmClearDraft = () => {
       phone: '',
       mainDepartment: '',
       subDepartments: [],
-      cvLink: ''
+      cvLink: '',
+      questions: ''
     });
     
     clearDraft();
@@ -416,6 +479,19 @@ const confirmClearDraft = () => {
       formRef.value.resetFields();
     }
   }
+};
+
+const confirmResetSubmission = () => {
+  const confirmed = window.confirm(t('recruitment.success.confirmReset'));
+  if (confirmed) {
+    submissionStatus.value = null;
+    message.success(t('recruitment.success.resetSuccess'));
+  }
+};
+
+const formatTimestamp = (timestamp) => {
+  const date = new Date(timestamp);
+  return date.toLocaleString();
 };
 
 const rules = computed(() => {
@@ -500,6 +576,12 @@ const handleStudentTypeChange = () => {
 };
 
 const handleSubmit = async () => {
+  // Check if form has already been submitted
+  if (submissionStatus.value) {
+    message.error(t('recruitment.validation.alreadySubmitted'));
+    return;
+  }
+
   try {
     await formRef.value.validate();
     
@@ -512,7 +594,15 @@ const handleSubmit = async () => {
       phone: formData.phone,
       mainDepartment: formData.mainDepartment,
       subDepartments: formData.subDepartments,
-      cvLink: formData.cvLink
+      cvLink: formData.cvLink,
+      questions: formData.questions
+    };
+
+    // Mark as submitted before emit to prevent multiple submissions
+    submissionStatus.value = {
+      submitted: true,
+      timestamp: new Date().toISOString(),
+      candidateName: formData.fullName
     };
 
     // Clear draft after successful submission
@@ -776,6 +866,24 @@ const handleSubmit = async () => {
   }
 }
 
+/* Questions/Comments Section */
+.questions-note {
+  margin-top: 8px;
+  padding: 8px 12px;
+  background: lighten($color-primary, 45%);
+  border-radius: 6px;
+  color: darken($color-primary, 15%);
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid lighten($color-primary, 25%);
+  
+  i {
+    color: $color-primary;
+  }
+}
+
 /* Submit Section */
 .submit-section {
   margin-top: 40px;
@@ -862,11 +970,91 @@ const handleSubmit = async () => {
   }
 }
 
-/* Form Item Styling */
+/* Submission Complete */
+.submission-complete {
+  text-align: center;
+  padding: 60px 40px;
+  background: white;
+  border-radius: 12px;
+  border: 2px solid $color-success;
+  
+  .success-icon {
+    font-size: 80px;
+    color: $color-success;
+    margin-bottom: 24px;
+    
+    i {
+      animation: successPulse 2s ease-in-out infinite;
+    }
+  }
+  
+  .success-title {
+    font-family: $vietnam-font-2;
+    font-size: 24px;
+    color: $color-success;
+    margin-bottom: 16px;
+    font-weight: $fw-semibold;
+  }
+  
+  .success-message {
+    font-size: 16px;
+    color: #181c32;
+    margin-bottom: 12px;
+    font-weight: $fw-semibold;
+  }
+  
+  .success-timestamp {
+    font-size: 14px;
+    color: $color-gray-7;
+    margin-bottom: 32px;
+  }
+  
+  .success-actions {
+    .reset-btn {
+      font-size: 13px;
+      padding: 8px 16px;
+      
+      i {
+        margin-right: 6px;
+      }
+      
+      &:hover {
+        background: rgba($color-danger, 0.1);
+        color: $color-danger;
+      }
+    }
+  }
+}
+
+@keyframes successPulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+/* Form Content */
 :deep(.ant-form-item-label > label) {
   font-weight: $fw-semibold;
   color: #181c32;
   font-size: 14px;
+}
+
+:deep(.ant-input), :deep(.ant-input.ant-input) {
+  border-radius: 6px;
+  border-color: $color-gray-5;
+  
+  &:hover {
+    border-color: $color-primary;
+  }
+  
+  &:focus,
+  &.ant-input-focused {
+    border-color: $color-primary;
+    box-shadow: 0 0 0 2px rgba($color-primary, 0.2);
+  }
 }
 
 :deep(.ant-input) {

@@ -177,9 +177,10 @@ const handleFormSubmit = async (formData) => {
       mainDepartment: formData.mainDepartment,
       subDepartments: JSON.stringify(formData.subDepartments),
       cvLink: formData.cvLink,
+      questions: formData.questions || ''
     });
 
-    const response = await fetch(`https://script.google.com/macros/s/AKfycbyswwclSVvyODTE1yTBtiJeQe660k--rGNs8-Eucom4s3kUGTtLkz7RKTykTozkpQWwdQ/exec?${params.toString()}`);
+    const response = await fetch(`https://script.google.com/macros/s/AKfycbyxoauUdPbcCd5jOhSbKi5CWbF9rvLDBx7vHXmkdyJi6ixIEplBtKLj0WU1MCUWK4ea9g/exec?${params.toString()}`);
     
     const result = await response.text();
     

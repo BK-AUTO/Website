@@ -22,7 +22,8 @@ function doGet(e) {
       studentType: (params.studentType || '').trim(), // 'hust' hoặc 'external'
       mainDepartment: (params.mainDepartment || '').trim(),
       subDepartments: params.subDepartments || '[]',
-      cvLink: (params.cvLink || '').trim()
+      cvLink: (params.cvLink || '').trim(),
+      questions: (params.questions || '').trim()
     };
 
     // Lưu vào Google Sheets
@@ -84,7 +85,7 @@ function saveToSheet(data) {
     if (sheet.getLastRow() === 0) {
       const headers = [
         'Timestamp', 'Họ tên', 'MSSV/Trường', 'Ngành/Lớp', 'Email', 'SĐT',
-        'Loại SV', 'Mảng chính', 'Mảng phụ', 'CV Link', 'Trạng thái'
+        'Loại SV', 'Mảng chính', 'Mảng phụ', 'CV Link', 'Câu hỏi/Thắc mắc', 'Trạng thái'
       ];
       sheet.getRange(1, 1, 1, headers.length).setValues([headers]);
       ensureSheetFormats_(sheet);
@@ -94,6 +95,7 @@ function saveToSheet(data) {
 
     // Chuẩn bị dữ liệu
     const phoneForSheet = data.phone ? ("'" + data.phone) : ""; // ép text, giữ 0 đầu
+    const questionsForSheet = data.questions ? data.questions.substring(0, 1000) : ""; // giới hạn 1000 ký tự
     const rowData = [
       data.timestampDate, // Date native
       data.fullName,
@@ -105,6 +107,7 @@ function saveToSheet(data) {
       getDepartmentName(data.mainDepartment),
       formatSubDepartments(data.subDepartments),
       data.cvLink,
+      questionsForSheet,
       'Đã nộp đơn'
     ];
 
@@ -119,9 +122,13 @@ function saveToSheet(data) {
     sheet.getRange('H:H').setNumberFormat('@');
     sheet.getRange('I:I').setNumberFormat('@');
     sheet.getRange('J:J').setNumberFormat('@');
+    sheet.getRange('K:K').setNumberFormat('@');
 
     sheet.getRange(nextRow, 1, 1, rowData.length).setValues([rowData]);
     sheet.getRange(nextRow, 1).setNumberFormat('yyyy-mm-dd hh:mm:ss'); // đảm bảo cột A dòng mới
+    
+    // Thiết lập dropdown validation cho row mới tạo (cột L)
+    setupStatusDropdownForRow_(sheet, nextRow);
 
     return { success: true };
   } catch (error) {
@@ -154,9 +161,54 @@ function ensureSheetFormats_(sheet) {
     // J: CV Link -> Text (tránh auto hyperlink hóa kiểu không mong muốn)
     sheet.getRange('J:J').setNumberFormat('@');
 
+    // K: Câu hỏi/Thắc mắc -> Text (wrap text cho nội dung dài)
+    sheet.getRange('K:K').setNumberFormat('@').setWrap(true);
+
+    // L: Trạng thái -> Dropdown validation
+    setupStatusDropdown_(sheet);
+
     // (Các cột khác để mặc định text theo nội dung)
   } catch (e) {
     Logger.log('ensureSheetFormats_ error: ' + e);
+  }
+}
+
+/** Thiết lập dropdown validation cho một row cụ thể (cột L) */
+function setupStatusDropdownForRow_(sheet, rowNumber) {
+  try {
+    const statusOptions = ['Đã nộp đơn', 'Duyệt', 'Loại'];
+    const rule = SpreadsheetApp.newDataValidation()
+      .requireValueInList(statusOptions, true)
+      .setAllowInvalid(false)
+      .setHelpText('Chọn trạng thái: Đã nộp đơn, Duyệt, hoặc Loại')
+      .build();
+    
+    // Áp dụng validation cho ô L của row được chỉ định
+    const cell = sheet.getRange(rowNumber, 12); // cột L = 12
+    cell.setDataValidation(rule);
+  } catch (error) {
+    Logger.log('setupStatusDropdownForRow_ error: ' + error.toString());
+  }
+}
+
+/** Thiết lập dropdown validation cho cột L (Trạng thái) */
+function setupStatusDropdown_(sheet) {
+  try {
+    const statusOptions = ['Đã nộp đơn', 'Duyệt', 'Loại'];
+    const rule = SpreadsheetApp.newDataValidation()
+      .requireValueInList(statusOptions, true)
+      .setAllowInvalid(false)
+      .setHelpText('Chọn trạng thái: Đã nộp đơn, Duyệt, hoặc Loại')
+      .build();
+    
+    // Áp dụng validation cho toàn bộ cột L (bỏ qua header row 1)
+    const lastRow = Math.max(sheet.getLastRow(), 2); // ít nhất từ row 2
+    const range = sheet.getRange(2, 12, lastRow - 1, 1); // cột L = 12
+    range.setDataValidation(rule);
+    
+    Logger.log('Status dropdown setup completed for column L');
+  } catch (error) {
+    Logger.log('setupStatusDropdown_ error: ' + error.toString());
   }
 }
 
@@ -248,7 +300,7 @@ function sendEmailViaResendHtmlOnly(to, subject, htmlBody) {
     }
 
     const payload = {
-      from: 'CLB BK-AUTO <noreply@bkauto.vn>', // Phải là email/domain đã verify trong Resend
+      from: 'Tuyển thành viên CLB BK-AUTO <ttv@bkauto.vn>', // Phải là email/domain đã verify trong Resend
       to: [to],
       subject: subject,
       html: htmlBody
@@ -301,7 +353,7 @@ function formatSubDepartments(subDepartmentsJson) {
     const names = {
       'communication': 'Truyền thông',
       'english': 'Tiếng Anh',
-      'manufacturing': 'Cơ khí'
+      'manufacturing': 'Gia công - Cơ khí'
     };
     return subDepts.map(code => names[code] || code).join(', ') || 'Không có';
   } catch (error) {

@@ -200,6 +200,10 @@
       "cvLink": "Link CV/Portfolio (gửi theo định dạng PDF):",
       "cvLinkPlaceholder": "https://drive.google.com/... hoặc link khác",
       "cvUploadNote": "Bạn có thể upload CV lên Google Drive, OneDrive hoặc các nền tảng khác rồi paste link (lưu ý: link dẫn trực tiếp đến file CV chứ không phải dẫn đến folder chứa CV) vào đây. CHÚ Ý nhớ mở quyền truy cập 'người xem' trước khi gửi đơn. CLB sẽ không chịu trách nhiệm nếu bạn không mở quyền truy cập hoặc gửi file không phải định dạng PDF hoặc nội dung không phải file CV của bạn.",
+      "questionsComments": "Thắc mắc & Câu hỏi",
+      "questions": "Bạn có thắc mắc hoặc câu hỏi nào muốn gửi đến CLB không?",
+      "questionsPlaceholder": "Ví dụ: Tôi muốn biết thêm về hoạt động của CLB, lịch sinh hoạt,...",
+      "questionsNote": "Phần này không bắt buộc. Bạn có thể để trống nếu không có câu hỏi nào.",
       "submit": "Gửi đơn đăng ký",
       "submitSuccess": "Đơn đăng ký đã được gửi thành công!",
       "submitError": "Có lỗi xảy ra khi gửi đơn. Vui lòng thử lại sau.",
@@ -238,12 +242,19 @@
       "phoneInvalid": "Số điện thoại không đúng định dạng",
       "mainDepartmentRequired": "Vui lòng chọn mảng chính",
       "cvLinkRequired": "Vui lòng nhập link CV",
-      "cvLinkInvalid": "Link CV không đúng định dạng"
+      "cvLinkInvalid": "Link CV không đúng định dạng",
+      "alreadySubmitted": "Bạn đã gửi đơn đăng ký trước đó. Mỗi thiết bị chỉ được phép gửi một đơn duy nhất."
     },
     "success": {
       "title": "Đăng ký thành công!",
       "message": "Cảm ơn bạn đã đăng ký tham gia CLB BK-AUTO",
-      "description": "Chúng mình sẽ gửi kết quả vòng đơn trước ngày 05/10/2025 qua email. Hoặc bạn có thể theo dõi thông tin trên Fanpage của CLB nhé!"
+      "description": "Chúng mình sẽ gửi kết quả vòng đơn trước ngày 05/10/2025 qua email. Hoặc bạn có thể theo dõi thông tin trên Fanpage của CLB nhé!",
+      "alreadySubmitted": "Bạn đã gửi đơn đăng ký thành công!",
+      "candidateName": "Ứng viên: {name}",
+      "submittedAt": "Thời gian gửi",
+      "allowResubmit": "Cho phép gửi lại",
+      "confirmReset": "Bạn có chắc chắn muốn reset trạng thái đã gửi đơn? Điều này sẽ cho phép gửi đơn mới từ thiết bị này.",
+      "resetSuccess": "Đã reset trạng thái thành công. Bạn có thể gửi đơn mới."
     }
   }
 }

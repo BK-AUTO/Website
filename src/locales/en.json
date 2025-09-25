@@ -200,6 +200,10 @@
       "cvLink": "CV/Portfolio Link",
       "cvLinkPlaceholder": "https://drive.google.com/... or other link",
       "cvUploadNote": "You can upload your CV to Google Drive, OneDrive or other platforms and paste the link here",
+      "questionsComments": "Questions & Comments",
+      "questions": "Do you have any questions or comments for the Club?",
+      "questionsPlaceholder": "e.g., I'd like to know more about club activities, study schedule,...",
+      "questionsNote": "This section is optional. You can leave it blank if you don't have any questions.",
       "submit": "Submit Application",
       "submitSuccess": "Application submitted successfully!",
       "submitError": "An error occurred while submitting. Please try again later.",
@@ -238,12 +242,19 @@
       "phoneInvalid": "Invalid phone number format",
       "mainDepartmentRequired": "Please select main department",
       "cvLinkRequired": "Please enter CV link",
-      "cvLinkInvalid": "Invalid CV link format"
+      "cvLinkInvalid": "Invalid CV link format",
+      "alreadySubmitted": "You have already submitted an application. Each device is only allowed to submit one application."
     },
     "success": {
       "title": "Registration Successful!",
       "message": "Thank you for applying to join BK-AUTO Club",
-      "description": "We will contact you via email before October 5, 2025. Or you can follow the information on the Club's Fanpage!"
+      "description": "We will contact you via email before October 5, 2025. Or you can follow the information on the Club's Fanpage!",
+      "alreadySubmitted": "You have successfully submitted your application!",
+      "candidateName": "Applicant: {name}",
+      "submittedAt": "Submitted at",
+      "allowResubmit": "Allow resubmission",
+      "confirmReset": "Are you sure you want to reset the submission status? This will allow submitting a new application from this device.",
+      "resetSuccess": "Reset successfully. You can submit a new application."
     }
   }
 }
