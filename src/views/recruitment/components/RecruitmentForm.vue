@@ -524,13 +524,6 @@ const handleSubmit = async () => {
     message.error(t('recruitment.form.validationError'));
   }
 };
-    };
-    
-    emit('submit', submitData);
-  } catch (error) {
-    console.error('Validation failed:', error);
-  }
-};
 </script>
 
 <style lang="scss" scoped>
