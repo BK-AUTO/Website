@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import Home from '../layout/AppLayout.vue';
 import { useAuthenticationStore } from '@/stores/authentication.js';
+import { useGA4 } from '@/composables/ga4.js';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -198,6 +199,17 @@ router.beforeEach(async (to, from) => {
   if (authenticationStore.user === null && to.meta.requireAuth) {
     return { path: '/login' };
   }
+});
+
+// Track page views with GA4
+router.afterEach((to, from) => {
+  const { trackPageView } = useGA4();
+  
+  // Wait for next tick để đảm bảo page đã loaded
+  setTimeout(() => {
+    const pageTitle = to.meta?.title || to.name || 'BK-AUTO';
+    trackPageView(to.path, pageTitle);
+  }, 100);
 });
 
 export default router;

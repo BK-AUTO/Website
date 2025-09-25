@@ -142,7 +142,7 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
 import { useI18n } from 'vue-i18n';
 import { message } from 'ant-design-vue';
@@ -150,15 +150,26 @@ import PageHeader from '@/components/PageHeader.vue';
 import Loading from '@/components/Loading.vue';
 import RecruitmentForm from './components/RecruitmentForm.vue';
 import { useTitle } from '@/composables/common.js';
+import { useGA4 } from '@/composables/ga4.js';
 
 useTitle('menu.memberRecruitment');
 
 const { t } = useI18n();
 const router = useRouter();
+const { trackEvent, trackClick } = useGA4();
 
 const isLoading = ref(false);
 const isSubmitting = ref(false);
 const showSuccessModal = ref(false);
+
+// Track page view when component is mounted
+onMounted(() => {
+  trackEvent('page_view', {
+    page_title: 'Member Recruitment',
+    page_location: window.location.href,
+    content_group: 'recruitment'
+  });
+});
 
 // Helper function to convert file to base64
 const fileToBase64 = (file) => {
@@ -175,6 +186,14 @@ const handleFormSubmit = async (formData) => {
   isLoading.value = true;
 
   try {
+    // Track form submission attempt
+    trackEvent('form_start', {
+      form_name: 'member_recruitment',
+      form_location: 'recruitment_page',
+      student_type: formData.studentType,
+      main_department: formData.mainDepartment
+    });
+
     // Convert file to base64 if exists
     let cvFileData = '';
     if (formData.cvFile && formData.cvFile.file) {
@@ -216,6 +235,16 @@ const handleFormSubmit = async (formData) => {
     const result = await response.text();
     
     if (response.ok) {
+      // Track successful form submission
+      trackEvent('form_submit', {
+        form_name: 'member_recruitment',
+        form_location: 'recruitment_page',
+        student_type: formData.studentType,
+        main_department: formData.mainDepartment,
+        has_cv: !!formData.cvFile,
+        submission_method: 'google_apps_script'
+      });
+      
       showSuccessModal.value = true;
       message.success(t('recruitment.form.submitSuccess'));
     } else {
@@ -223,6 +252,15 @@ const handleFormSubmit = async (formData) => {
     }
   } catch (error) {
     console.error('Submit error:', error);
+    
+    // Track form submission error
+    trackEvent('form_error', {
+      form_name: 'member_recruitment',
+      form_location: 'recruitment_page',
+      error_message: error.message,
+      submission_method: 'google_apps_script'
+    });
+    
     message.error(t('recruitment.form.submitError'));
   } finally {
     isSubmitting.value = false;
@@ -231,6 +269,9 @@ const handleFormSubmit = async (formData) => {
 };
 
 const closeSuccessModal = () => {
+  // Track modal close and navigation
+  trackClick('success_modal_close', 'button', 'recruitment_success');
+  
   showSuccessModal.value = false;
   router.push('/dashboard');
 };

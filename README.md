@@ -1,3 +1,33 @@
+# BK-AUTO Website
+
+## Giới thiệu
+Website chính thức của câu lạc bộ BK-AUTO - Đại học Bách Khoa Hà Nội.
+
+## Tính năng
+- Website responsive với Vue.js 3
+- Quản lý khóa học, tin tức, dự án, nghiên cứu
+- Tuyển thành viên online
+- Tích hợp Google Analytics 4 (GA4)
+- Đa ngôn ngữ (Tiếng Việt/English)
+- Dashboard quản trị
+
+## Cài đặt và Chạy
+
+### Google Analytics 4 Setup
+1. Tạo file `.env` từ `.env.example`:
+```bash
+cp .env.example .env
+```
+
+2. Cập nhật Measurement ID trong `.env`:
+```bash
+VITE_GA4_MEASUREMENT_ID=G-XXXXXXXXXX
+```
+
+3. Xem hướng dẫn chi tiết tại [docs/GA4_INTEGRATION_GUIDE.md](docs/GA4_INTEGRATION_GUIDE.md)
+
+### Docker Setup
+
 # FULL COMPONENTS (Ubuntu tutorial) - Tất cả các command ở bước này đều cần chạy ở đường dẫn có source code
 
 Bước 1: Cài đặt Docker và Docker compose
