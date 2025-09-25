@@ -247,7 +247,7 @@
       "cvLinkInvalid": "Link CV không đúng định dạng",
       "cvFileRequired": "Vui lòng tải lên file CV",
       "fileSizeError": "File quá lớn. Kích thước tối đa cho phép là {maxSize}",
-      "fileTypeError": "Định dạng file không được hỗ trợ. Vui lòng chọn file PDF, DOC hoặc DOCX",
+      "fileTypeError": "Định dạng file không được hỗ trợ. Vui lòng chọn file PDF",
       "fileError": "Có lỗi xảy ra khi xử lý file. Vui lòng thử lại",
       "alreadySubmitted": "Bạn đã gửi đơn đăng ký trước đó. Mỗi thiết bị chỉ được phép gửi một đơn duy nhất."
     },

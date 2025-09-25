@@ -82,7 +82,7 @@ const uploadError = ref('');
 const acceptedFileTypes = props.acceptedTypes;
 const maxFileSize = props.maxSize;
 const labelIdle = t('recruitment.form.cvUploadLabel', {
-  defaultMessage: 'Kéo thả file CV vào đây hoặc <span class="filepond--label-action">Chọn file</span><br>Hỗ trợ: PDF, DOC, DOCX (Tối đa 5MB)'
+  defaultMessage: 'Kéo thả file CV vào đây hoặc <span class="filepond--label-action">Chọn file</span><br>Hỗ trợ: PDF (Tối đa 5MB)'
 });
 
 // Methods
